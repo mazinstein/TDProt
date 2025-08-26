@@ -6,9 +6,27 @@ public class UnitController : MonoBehaviour
     public float moveSpeed = 5f;
     public GameObject selectionHighlight; // Assign in Inspector
 
+    // --- Добавьте эти строки ---
+    public GameObject healthBarPrefab; // Префаб полоски здоровья (назначьте в инспекторе)
+    private HealthBar healthBar;
+
     private Queue<Vector3> moveQueue = new Queue<Vector3>();
     private Vector3 targetPos;
     private bool isMoving = false;
+
+    void Start()
+    {
+        // --- Добавьте этот блок ---
+        if (healthBarPrefab != null)
+        {
+            var bar = Instantiate(healthBarPrefab, transform);
+            bar.transform.localPosition = new Vector3(0, 1.5f, 0); // над головой
+            healthBar = bar.GetComponent<HealthBar>();
+            var health = GetComponent<Health>();
+            if (healthBar != null && health != null)
+                healthBar.health = health;
+        }
+    }
 
     void Update()
     {
