@@ -142,6 +142,14 @@ public class SelectionManager : MonoBehaviour
             int col = i % rows;
 
             Vector3 target = center + new Vector3(col * spacing, -row * spacing, 0f);
+
+            // Проверяем, чтобы точка назначения не была внутри препятствия
+            if (Physics2D.OverlapPoint(target, LayerMask.GetMask("Obstacle")) != null)
+            {
+                Debug.Log("Target position is inside an obstacle, skipping!");
+                continue;
+            }
+
             selectedUnits[i].MoveTo(target, false);
         }
     }

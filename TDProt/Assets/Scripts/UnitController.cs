@@ -50,6 +50,14 @@ public class UnitController : MonoBehaviour
     // Если queue=true → добавляем к текущей очереди
     public void MoveTo(Vector3 position, bool queue = false)
     {
+        // Проверяем, свободна ли точка назначения
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, position - transform.position, Vector3.Distance(transform.position, position));
+        if (hit.collider != null && hit.collider.CompareTag("Obstacle"))
+        {
+            Debug.Log("Cannot move to the target position, obstacle detected!");
+            return;
+        }
+
         if (queue)
         {
             moveQueue.Enqueue(position);
