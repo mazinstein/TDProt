@@ -14,7 +14,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        if (IsDead()) return; // не принимаем урон, если уже мёртв
+        if (IsDead()) return;
 
         currentHealth -= amount;
 

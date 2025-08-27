@@ -108,7 +108,8 @@ public class Combat : MonoBehaviour
 
     Vector3 GetFormationPosition()
     {
-        if (target == null) return transform.position;
+        if (target == null || !attackers.ContainsKey(target))
+            return transform.position;
 
         List<Combat> group = attackers[target];
         int index = group.IndexOf(this);

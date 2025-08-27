@@ -1,24 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    public Health health;      // Ссылка на компонент здоровья персонажа
-    public Transform fill;     // Ссылка на спрайт Fill (зелёная часть)
+    public Health health; // Ссылка на компонент здоровья персонажа
+    public Image fillImage; // Ссылка на Image с типом Fill
 
-    private Vector3 initialScale;
-
-    void Start()
+    private void LateUpdate()
     {
-        if (fill != null)
-            initialScale = fill.localScale; // запоминаем начальный масштаб
-    }
+        if (health != null && fillImage != null)
+        {
+            fillImage.fillAmount = health.GetHealthPercent();
+        }
 
-    void Update()
-    {
-        if (health == null || fill == null) return;
-
-        // Обновляем ширину Fill в зависимости от здоровья
-        float percent = health.GetHealthPercent();
-        fill.localScale = new Vector3(initialScale.x * percent, initialScale.y, initialScale.z);
+        // Повернуть к камере (если нужно)
+        if (Camera.main != null)
+            transform.LookAt(Camera.main.transform);
     }
 }

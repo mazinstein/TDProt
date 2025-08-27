@@ -6,17 +6,19 @@ public class UnitController : MonoBehaviour
     public float moveSpeed = 5f;
     public GameObject selectionHighlight; // Assign in Inspector
 
-    // --- Добавьте эти строки ---
     public GameObject healthBarPrefab; // Префаб полоски здоровья (назначьте в инспекторе)
-    private HealthBar healthBar;
+    public HealthBar healthBar;
 
     private Queue<Vector3> moveQueue = new Queue<Vector3>();
     private Vector3 targetPos;
     private bool isMoving = false;
 
+    private Collider2D selfCollider;
+
     void Start()
     {
-        // --- Добавьте этот блок ---
+        selfCollider = GetComponent<Collider2D>();
+
         if (healthBarPrefab != null)
         {
             var bar = Instantiate(healthBarPrefab, transform);
@@ -32,7 +34,23 @@ public class UnitController : MonoBehaviour
     {
         if (isMoving)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            Vector3 direction = (targetPos - transform.position).normalized;
+            float distance = moveSpeed * Time.deltaTime;
+
+            // Проверяем препятствие на пути (игнорируем свой коллайдер)
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance);
+            if (hit.collider != null && hit.collider != selfCollider)
+            {
+                // Останавливаемся у препятствия
+                transform.position = hit.point;
+                isMoving = false;
+                moveQueue.Clear();
+                return;
+            }
+
+            // Двигаемся к цели, если препятствий нет
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, distance);
+
             if (Vector3.Distance(transform.position, targetPos) < 0.1f)
             {
                 if (moveQueue.Count > 0)
@@ -50,11 +68,11 @@ public class UnitController : MonoBehaviour
     // Если queue=true → добавляем к текущей очереди
     public void MoveTo(Vector3 position, bool queue = false)
     {
-        // Проверяем, свободна ли точка назначения
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, position - transform.position, Vector3.Distance(transform.position, position));
-        if (hit.collider != null && hit.collider.CompareTag("Obstacle"))
+        // Проверяем, не внутри ли препятствия целевая точка (игнорируем свой коллайдер)
+        Collider2D hit = Physics2D.OverlapPoint(position);
+        if (hit != null && hit != selfCollider)
         {
-            Debug.Log("Cannot move to the target position, obstacle detected!");
+            Debug.Log("Target position is inside a collider! Movement cancelled.");
             return;
         }
 
