@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 7585798916971173633}
   - component: {fileID: 289655759028414025}
   - component: {fileID: 597200767660229880}
-  - component: {fileID: 2585897334244420467}
   - component: {fileID: 4003749401509140130}
-  m_Layer: 0
+  - component: {fileID: 9183595355212488012}
+  m_Layer: 9
   m_Name: Archer_Blue_(NoArms)_0
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -159,8 +159,35 @@ MonoBehaviour:
   attackRange: 1.5
   visionRange: 5
   attackRate: 1
---- !u!61 &2585897334244420467
-BoxCollider2D:
+--- !u!50 &4003749401509140130
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217182181153674640}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!60 &9183595355212488012
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -203,32 +230,19 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.57, y: 0.77}
-  m_EdgeRadius: 0
---- !u!50 &4003749401509140130
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217182181153674640}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Points:
+    m_Paths:
+    - - {x: 0.285, y: 0.095}
+      - {x: 0.044999998, y: 0.385}
+      - {x: -0.225, y: 0.385}
+      - {x: -0.255, y: 0.325}
+      - {x: -0.24499999, y: 0.255}
+      - {x: -0.195, y: 0.195}
+      - {x: -0.285, y: 0.065}
+      - {x: -0.285, y: -0.125}
+      - {x: -0.205, y: -0.305}
+      - {x: -0.195, y: -0.33499998}
+      - {x: 0.225, y: -0.33499998}
+      - {x: 0.225, y: -0.21499999}
+      - {x: 0.285, y: -0.114999995}
+  m_UseDelaunayMesh: 0
