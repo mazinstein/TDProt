@@ -30,42 +30,43 @@ public class UnitController : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (isMoving)
+        if (!isMoving)
+            return;
+
+        Vector3 direction = (targetPos - transform.position).normalized;
+        float distance = moveSpeed * Time.fixedDeltaTime;
+
+        // Проверяем препятствие на пути (игнорируем свой коллайдер)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance);
+        if (hit.collider != null && hit.collider != selfCollider)
         {
-            Vector3 direction = (targetPos - transform.position).normalized;
-            float distance = moveSpeed * Time.deltaTime;
+            transform.position = hit.point;
+            isMoving = false;
+            moveQueue.Clear();
+            return;
+        }
 
-            // Проверяем препятствие на пути (игнорируем свой коллайдер)
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance);
-            if (hit.collider != null && hit.collider != selfCollider)
-            {
-                // Останавливаемся у препятствия
-                transform.position = hit.point;
-                isMoving = false;
-                moveQueue.Clear();
-                return;
-            }
-
-            // Двигаемся к цели, если препятствий нет
+        var rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.MovePosition(rb.position + (Vector2)direction * distance);
+        }
+        else
+        {
             transform.position = Vector3.MoveTowards(transform.position, targetPos, distance);
+        }
 
-            if (Vector3.Distance(transform.position, targetPos) < 0.1f)
-            {
-                if (moveQueue.Count > 0)
-                {
-                    targetPos = moveQueue.Dequeue();
-                }
-                else
-                {
-                    isMoving = false;
-                }
-            }
+        if (Vector3.Distance(transform.position, targetPos) < 0.1f)
+        {
+            if (moveQueue.Count > 0)
+                targetPos = moveQueue.Dequeue();
+            else
+                isMoving = false;
         }
     }
 
-    // Если queue=true → добавляем к текущей очереди
     public void MoveTo(Vector3 position, bool queue = false)
     {
         // Проверяем, не внутри ли препятствия целевая точка (игнорируем свой коллайдер)
@@ -86,7 +87,7 @@ public class UnitController : MonoBehaviour
             moveQueue.Enqueue(position);
         }
 
-        if (!isMoving)
+        if (!isMoving && moveQueue.Count > 0)
         {
             targetPos = moveQueue.Dequeue();
             isMoving = true;
