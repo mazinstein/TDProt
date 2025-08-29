@@ -277,8 +277,6 @@ GameObject:
   - component: {fileID: 4715497962654343814}
   - component: {fileID: 6619637228067284922}
   - component: {fileID: 6902891490505808480}
-  - component: {fileID: 7049386402995742306}
-  - component: {fileID: 193434437349586522}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -543,43 +541,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7049386402995742306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265577881891466836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27678c5a65fdcd0479cf35cce4193775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  attackRadius: 2
-  buildingMask:
-    serializedVersion: 2
-    m_Bits: 256
-  antMask:
-    serializedVersion: 2
-    m_Bits: 512
---- !u!114 &193434437349586522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5265577881891466836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4207624517e2af7429520885d46e2a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  avoidDistance: 1
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &5595886441527704535
 GameObject:
   m_ObjectHideFlags: 0

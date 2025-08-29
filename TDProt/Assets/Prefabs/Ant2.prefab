@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8828255768682120544}
   - component: {fileID: 6059081741812248113}
   - component: {fileID: 4396687321222923607}
+  - component: {fileID: 8505406567804349076}
   - component: {fileID: 5635398466822002616}
-  - component: {fileID: 4333350578267303986}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Ant2
   m_TagString: Unit
   m_Icon: {fileID: 0}
@@ -152,35 +152,8 @@ MonoBehaviour:
   moveSpeed: 5
   selectionHighlight: {fileID: 0}
   healthBarPrefab: {fileID: 0}
---- !u!50 &5635398466822002616
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4072447810342656498}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!60 &4333350578267303986
-PolygonCollider2D:
+--- !u!61 &8505406567804349076
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -223,37 +196,32 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.114999995, y: -0.405}
-      - {x: 0.285, y: -0.285}
-      - {x: 0.435, y: -0.085}
-      - {x: 0.445, y: -0.065}
-      - {x: 0.445, y: 0.21499999}
-      - {x: 0.36499998, y: 0.21499999}
-      - {x: 0.285, y: 0.345}
-      - {x: 0.155, y: 0.475}
-      - {x: 0.185, y: 0.555}
-      - {x: 0.185, y: 0.615}
-      - {x: -0.005, y: 0.615}
-      - {x: -0.095, y: 0.585}
-      - {x: -0.16499999, y: 0.53499997}
-      - {x: -0.255, y: 0.305}
-      - {x: -0.275, y: 0.16499999}
-      - {x: -0.39499998, y: 0.21499999}
-      - {x: -0.445, y: 0.13499999}
-      - {x: -0.445, y: -0.074999996}
-      - {x: -0.315, y: -0.145}
-      - {x: -0.305, y: -0.275}
-      - {x: -0.175, y: -0.415}
-      - {x: -0.125, y: -0.42499998}
-      - {x: -0.074999996, y: -0.42499998}
-      - {x: -0.095, y: -0.42499998}
-      - {x: -0.114999995, y: -0.445}
-      - {x: -0.125, y: -0.48499998}
-      - {x: -0.055, y: -0.565}
-      - {x: 0.095, y: -0.565}
-      - {x: 0.145, y: -0.435}
-      - {x: 0.074999996, y: -0.405}
-      - {x: 0.055, y: -0.405}
-  m_UseDelaunayMesh: 0
+  m_Size: {x: 0.89, y: 1.23}
+  m_EdgeRadius: 0
+--- !u!50 &5635398466822002616
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4072447810342656498}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

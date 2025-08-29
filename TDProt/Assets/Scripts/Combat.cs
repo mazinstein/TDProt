@@ -43,7 +43,7 @@ public class Combat : MonoBehaviour
             {
                 // получаем "свою" позицию вокруг врага
                 Vector3 attackPos = GetFormationPosition();
-                        unitController.MoveTo(attackPos, false);
+                unitController.MoveTo(attackPos, false);
             }
             else
             {
