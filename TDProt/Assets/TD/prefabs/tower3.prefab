@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 271605997670361280}
   - component: {fileID: -8565653873486683453}
   - component: {fileID: 8910261670044837106}
+  - component: {fileID: -4731025799931754615}
   m_Layer: 0
   m_Name: tower3
   m_TagString: Untagged
@@ -167,3 +168,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4731025799931754615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6295010366248453139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a587aadaf9ea1646a8c4816946d85a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _towerPlace: {fileID: 0}
+  _towerHead: {fileID: 0}
+  _shootPower: 1
+  _shootDistance: 1
+  _shootDelay: 5
+  _bulletSpeed: 1
+  _bulletSplashRadius: 0
+  _bulletPrefab: {fileID: 0}
