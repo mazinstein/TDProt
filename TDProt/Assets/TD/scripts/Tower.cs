@@ -53,9 +53,16 @@ public class Tower : MonoBehaviour
     // Mengubah order in layer pada tower yang sedang di drag
     public void ToggleOrderInLayer (bool toFront)
     {
-        int orderInLayer = toFront ? 2 : 0;
-        _towerPlace.sortingOrder = orderInLayer;
-        _towerHead.sortingOrder = orderInLayer;
+        if (toFront)
+        {
+            _towerPlace.sortingOrder = 1; // plate сзади
+            _towerHead.sortingOrder = 2;  // голова впереди
+        }
+        else
+        {
+            _towerPlace.sortingOrder = 0; // стандартное положение
+            _towerHead.sortingOrder = 1;
+        }
     }
 
     // Mengecek musuh terdekat
