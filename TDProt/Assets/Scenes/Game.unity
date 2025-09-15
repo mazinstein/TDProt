@@ -3165,9 +3165,9 @@ MonoBehaviour:
   _towerUIParent: {fileID: 1993542978}
   _towerUIPrefab: {fileID: 5663207369547988758, guid: 37b1450444c52472fb7fb205656c42ec, type: 3}
   _towerPrefabs:
-  - {fileID: 3482133838776029627, guid: 04039d91ab02a0848824d93f9f3d5f1a, type: 3}
-  - {fileID: 3482133838776029627, guid: 4b880b9ec4a464734abf00b3488807fc, type: 3}
-  - {fileID: 3482133838776029627, guid: f3d06ad4cb744464fbe2b1386330e783, type: 3}
+  - {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+  - {fileID: 6959069273343871193, guid: 92e3ed183bd474265870796a6b5da508, type: 3}
+  - {fileID: 3136276570880794436, guid: a99d3b5f6be2b4801be79c04ce5b1887, type: 3}
   _enemyPrefabs:
   - {fileID: -5206879520019544309, guid: b904b973f4361184db173aa7150a33ca, type: 3}
   - {fileID: 2822891006935936982, guid: d5308d7f4aec95e48979126ecd5f73f6, type: 3}
