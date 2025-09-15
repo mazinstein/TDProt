@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Tower : MonoBehaviour
 {
@@ -14,28 +12,13 @@ public class Tower : MonoBehaviour
     [SerializeField] private float _bulletSplashRadius = 0f;
 
     [SerializeField] private Bullet _bulletPrefab;
-    
+
     private float _runningShootDelay;
     private Enemy _targetEnemy;
-    private Quaternion _targetRotation;
 
-    // Digunakan untuk menyimpan posisi yang akan ditempati selama tower di drag
     public Vector2? PlacePosition { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Fungsi yang digunakan untuk mengambil sprite pada Tower Head
-    public Sprite GetTowerHeadIcon ()
+    public Sprite GetTowerHeadIcon()
     {
         return _towerHead.sprite;
     }
@@ -45,32 +28,32 @@ public class Tower : MonoBehaviour
         PlacePosition = newPosition;
     }
 
-    public void LockPlacement ()
+    public void LockPlacement()
     {
-        transform.position = (Vector2) PlacePosition;
+        transform.position = (Vector2)PlacePosition;
     }
 
-    // Mengubah order in layer pada tower yang sedang di drag
-    public void ToggleOrderInLayer (bool toFront)
+    public void ToggleOrderInLayer(bool toFront)
     {
         if (toFront)
         {
-            _towerPlace.sortingOrder = 1; // plate сзади
-            _towerHead.sortingOrder = 2;  // голова впереди
+            _towerPlace.sortingOrder = 1;
+            _towerHead.sortingOrder = 2;
         }
         else
         {
-            _towerPlace.sortingOrder = 0; // стандартное положение
+            _towerPlace.sortingOrder = 0;
             _towerHead.sortingOrder = 1;
         }
     }
 
-    // Mengecek musuh terdekat
-    public void CheckNearestEnemy (List<Enemy> enemies)
+    // Проверяем ближайшего врага
+    public void CheckNearestEnemy(List<Enemy> enemies)
     {
         if (_targetEnemy != null)
         {
-            if (!_targetEnemy.gameObject.activeSelf || Vector3.Distance (transform.position, _targetEnemy.transform.position) > _shootDistance)
+            if (!_targetEnemy.gameObject.activeSelf ||
+                Vector3.Distance(transform.position, _targetEnemy.transform.position) > _shootDistance)
             {
                 _targetEnemy = null;
             }
@@ -82,10 +65,10 @@ public class Tower : MonoBehaviour
 
         float nearestDistance = Mathf.Infinity;
         Enemy nearestEnemy = null;
-        
+
         foreach (Enemy enemy in enemies)
         {
-            float distance = Vector3.Distance (transform.position, enemy.transform.position);
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
             if (distance > _shootDistance)
             {
                 continue;
@@ -99,41 +82,58 @@ public class Tower : MonoBehaviour
         _targetEnemy = nearestEnemy;
     }
 
-    // Menembak musuh yang telah disimpan sebagai target
-    public void ShootTarget ()
+    // Стрельба по врагу
+    public void ShootTarget()
     {
+        // Проверяем, есть ли цель
         if (_targetEnemy == null)
         {
+            Debug.Log("Нет цели для стрельбы");
             return;
         }
 
+        // Уменьшаем таймер
         _runningShootDelay -= Time.unscaledDeltaTime;
+
+        // Проверяем, можно ли стрелять
         if (_runningShootDelay <= 0f)
         {
-            bool headHasAimed = Mathf.Abs (_towerHead.transform.rotation.eulerAngles.z - _targetRotation.eulerAngles.z) < 10f;
-            if (!headHasAimed)
+            Debug.Log(">>> Tower пытается стрелять!");
+
+            // Проверка префаба
+            if (_bulletPrefab == null)
             {
+                Debug.LogError("BulletPrefab не назначен в инспекторе!");
                 return;
             }
-            Bullet bullet = LevelManager.Instance.GetBulletFromPool (_bulletPrefab);
+
+            // Получаем пулю из LevelManager
+            Bullet bullet = LevelManager.Instance.GetBulletFromPool(_bulletPrefab);
+            if (bullet == null)
+            {
+                Debug.LogError("Не удалось создать пулю!");
+                return;
+            }
+
+            // Устанавливаем позицию пули
             bullet.transform.position = transform.position;
-            bullet.SetProperties (_shootPower, _bulletSpeed, _bulletSplashRadius);
-            bullet.SetTargetEnemy (_targetEnemy);
-            bullet.gameObject.SetActive (true);
+
+            // Настраиваем свойства пули
+            bullet.SetProperties(_shootPower, _bulletSpeed, _bulletSplashRadius);
+            bullet.SetTargetEnemy(_targetEnemy);
+
+            // Активируем пулю
+            bullet.gameObject.SetActive(true);
+
+            Debug.Log(">>> Пуля создана на позиции: " + bullet.transform.position + " с целью: " + _targetEnemy.name);
+
+            // Сбрасываем таймер стрельбы
             _runningShootDelay = _shootDelay;
         }
     }
 
-    // Membuat tower selalu melihat ke arah musuh
-    public void SeekTarget ()
-    {
-        if (_targetEnemy == null)
-        {
-            return;
-        }
-        Vector3 direction = _targetEnemy.transform.position - transform.position;
-        float targetAngle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
-        _targetRotation = Quaternion.Euler (new Vector3 (0f, 0f, targetAngle - 90f));
-        _towerHead.transform.rotation = Quaternion.RotateTowards (_towerHead.transform.rotation, _targetRotation, Time.deltaTime * 180f);
-    }
+
+
+    // Больше не нужен поворот — метод оставляем пустым
+    public void SeekTarget() { }
 }
