@@ -1,46 +1,42 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
     private Tower _placedTower;
+    private static HashSet<Vector2> _occupiedPositions = new HashSet<Vector2>();
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
+        Debug.Log("Enter: " + collision.name);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Fungsi yang terpanggil sekali ketika ada object Rigidbody yang menyentuh area collider
-    private void OnTriggerEnter2D (Collider2D collision)
-    {
         if (_placedTower != null)
-        {
             return;
-        }
-        Tower tower = collision.GetComponent<Tower> ();
-        if (tower != null)
+
+        Tower tower = collision.GetComponent<Tower>();
+        if (tower != null && tower.PlacePosition == null)
         {
-            tower.SetPlacePosition (transform.position);
+            Vector2 pos = transform.position;
+            if (_occupiedPositions.Contains(pos))
+                return; // точка уже занята
+
+            tower.SetPlacePosition(pos);
+            tower.LockPlacement(); // <--- добавьте эту строку
             _placedTower = tower;
+            _occupiedPositions.Add(pos);
         }
     }
 
-    // Kebalikan dari OnTriggerEnter2D, fungsi ini terpanggil sekali ketika object tersebut meninggalkan area collider
-    private void OnTriggerExit2D (Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("Exit: " + collision.name);
+
         if (_placedTower == null)
-        {
             return;
-        }
-        _placedTower.SetPlacePosition (null);
+
+        Vector2 pos = transform.position;
+        _placedTower.SetPlacePosition(null);
         _placedTower = null;
+        _occupiedPositions.Remove(pos);
     }
 }
