@@ -50,9 +50,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 1
   _moveSpeed: 1
-  _healthBar: {fileID: 7654736980542259335, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
+  _healthBar: {fileID: 1190170168578996236}
   _healthFill: {fileID: 7202024951540894590}
   _coinReward: 1
+  _healthBarLerpSpeed: 8
 --- !u!212 &1299062274008212149
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -221,7 +222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1823386400770634741, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1891904485013153904, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,13 +270,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7654736980542259335, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
+--- !u!212 &1190170168578996236 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7654736980542259335, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
+  m_PrefabInstance: {fileID: 8844862737808783499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6989066375444762875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1891904485013153904, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}

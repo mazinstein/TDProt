@@ -199,7 +199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -9017150287926034356, guid: 28712faa321eef642b8068b65e91abc2, type: 3}
+  m_Sprite: {fileID: 9164097274103974401, guid: 43d4fa9bbea220345a51f1a93a9d543d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -222,7 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _towerIcon: {fileID: 7129934220429136240}
-  _towerCost: 2
 --- !u!1 &7200061744488907214
 GameObject:
   m_ObjectHideFlags: 0
