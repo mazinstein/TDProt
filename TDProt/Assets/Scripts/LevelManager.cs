@@ -65,6 +65,10 @@ public class LevelManager : MonoBehaviour
     private bool _allEnemiesSpawned = false; // spawner установит true, когда больше не будет спавнов
     // Примечание: "_enemyCounter" можно оставить для отображения в UI, но реальное спавниг-логика вне LevelManager
     private int _enemyCounter;
+    private int killedEnemies = 0;
+
+    [Header("Victory UI")]
+    [SerializeField] private GameObject victoryPanel;
 
     private void Awake()
     {
@@ -195,6 +199,13 @@ public class LevelManager : MonoBehaviour
     public void SetAllEnemiesSpawned()
     {
         _allEnemiesSpawned = true;
+        Debug.Log("LevelManager: SetAllEnemiesSpawned called, _allEnemiesSpawned set to true");
+        // Проверяем победу сразу после установки флага
+        if (!_spawnedEnemies.Exists(e => e != null && e.gameObject.activeSelf))
+        {
+            Debug.Log("Victory condition met in SetAllEnemiesSpawned, calling SetGameOver(true)");
+            SetGameOver(true);
+        }
     }
 
     /// <summary>
@@ -203,9 +214,14 @@ public class LevelManager : MonoBehaviour
     /// </summary>
     public void OnEnemyDeactivated(Enemy enemy)
     {
-        // Ничего не удаляем по умолчанию — просто точка расширения.
-        // Если хочешь чистить список, раскомментируй следующую строку:
-        // _spawnedEnemies.Remove(enemy);
+        killedEnemies++;
+        Debug.Log($"Enemy killed: {killedEnemies}/{_totalEnemy}");
+
+        if (killedEnemies >= _totalEnemy)
+        {
+            Debug.Log("All enemies killed! Showing victory panel.");
+            SetGameOver(true);
+        } 
     }
     #endregion
 
@@ -251,7 +267,9 @@ public class LevelManager : MonoBehaviour
     #region Explosions
     public void ExplodeAt(Vector2 point, float radius, int damage)
     {
-        foreach (Enemy enemy in _spawnedEnemies)
+        // Создаём копию списка для безопасного перебора
+        var enemiesCopy = new List<Enemy>(_spawnedEnemies);
+        foreach (Enemy enemy in enemiesCopy)
         {
             if (enemy.gameObject.activeSelf && Vector2.Distance(enemy.transform.position, point) <= radius)
                 enemy.ReduceEnemyHealth(damage);
@@ -277,10 +295,21 @@ public class LevelManager : MonoBehaviour
     public void SetGameOver(bool isWin)
     {
         IsOver = true;
+        Debug.Log($"SetGameOver called. isWin={isWin}, _panel={_panel}, _statusInfo={_statusInfo}");
+
         if (_statusInfo != null)
             _statusInfo.text = isWin ? "You Win!" : "You Lose!";
+        else
+            Debug.LogWarning("StatusInfo is not assigned!");
+
         if (_panel != null)
             _panel.SetActive(true);
+        else
+            Debug.LogWarning("Panel is not assigned!");
+
+        // Показываем VictoryPanel только при победе
+        if (isWin && victoryPanel != null)
+            victoryPanel.SetActive(true);
     }
     #endregion
 
@@ -326,12 +355,19 @@ public class LevelManager : MonoBehaviour
 
     private bool ExistsActiveEnemy()
     {
+        int activeCount = 0;
         for (int i = 0; i < _spawnedEnemies.Count; i++)
         {
             var e = _spawnedEnemies[i];
-            if (e != null && e.gameObject.activeSelf) return true;
+            if (e != null)
+            {
+                Debug.Log($"Enemy {e.name}: activeSelf={e.gameObject.activeSelf}");
+                if (e.gameObject.activeSelf)
+                    activeCount++;
+            }
         }
-        return false;
+        Debug.Log($"ExistsActiveEnemy: activeCount={activeCount}");
+        return activeCount > 0;
     }
     #endregion
 }

@@ -99,23 +99,14 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        // уведомляем менеджер
+        gameObject.SetActive(false);
         if (LevelManager.Instance != null)
-            LevelManager.Instance.AddCoins(_coinReward);
-            Spawner s = FindObjectOfType<Spawner>();
-            if (s != null) s.NotifyEnemyDead();
-        if (_spawnerRef != null) _spawnerRef.NotifyEnemyDead();
-        else
         {
-
-            if (s != null) s.NotifyEnemyDead();
+            LevelManager.Instance.AddCoins(_coinReward);
+            if (_spawnerRef != null)
+                _spawnerRef.NotifyEnemyDead();
+            LevelManager.Instance.OnEnemyDeactivated(this);
+            Debug.Log("Enemy: Die called, deactivated and notified LevelManager/Spawner");
         }
-
-
-        // возвращаем в пул, если он есть
-        if (_ownerPool != null)
-            _ownerPool.Release(gameObject);
-        else
-            gameObject.SetActive(false);
     }
 }

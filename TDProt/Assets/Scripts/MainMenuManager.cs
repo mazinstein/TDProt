@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     #region Game Flow
     public void StartGame()
     {
-        LoadScene("GameScene");
+        LoadScene("Game");
     }
 
     public void RestartLevel()
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadSettingsScene()
     {
-        LoadScene("SettingsScene");
+        LoadScene("Settings");
     }
     #endregion
 
@@ -189,4 +189,9 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(false);
     }
     #endregion
+
+    public void LoadLevel2()
+    {
+        LoadScene("Level2");
+    }
 }
