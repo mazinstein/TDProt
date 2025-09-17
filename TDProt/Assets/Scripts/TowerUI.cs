@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] private Image _towerIcon;
-    [SerializeField] private int _towerCost = 2; // стоимость башни, можно менять в инспекторе
 
     private Tower _towerPrefab;
     private Tower _currentSpawnedTower;
@@ -20,7 +19,8 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!LevelManager.Instance.SpendCoins(_towerCost))
+        int towerCost = _towerPrefab.TowerCost;
+        if (!LevelManager.Instance.SpendCoins(towerCost))
         {
             Debug.Log("Недостаточно монет для постройки башни!");
             return;
@@ -46,10 +46,11 @@ public class TowerUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     {
         if (_currentSpawnedTower == null) return;
 
+        int towerCost = _towerPrefab.TowerCost;
         if (_currentSpawnedTower.PlacePosition == null)
         {
             Destroy(_currentSpawnedTower.gameObject);
-            LevelManager.Instance.AddCoins(_towerCost); // возвращаем монеты
+            LevelManager.Instance.AddCoins(towerCost); // возвращаем монеты
         }
         else
         {

@@ -55,7 +55,16 @@ public class Enemy : MonoBehaviour
         }
 
         float healthPercentage = (float)_currentHealth / _maxHealth;
-        _healthFill.size = new Vector2(healthPercentage * _healthBar.size.x, _healthBar.size.y);
+        float newWidth = healthPercentage * _healthBar.size.x;
+        _healthFill.size = new Vector2(newWidth, _healthBar.size.y);
+
+        // Смещаем fill так, чтобы левый край оставался на месте
+        float leftEdge = _healthBar.transform.position.x - (_healthBar.size.x / 2f);
+        _healthFill.transform.position = new Vector3(
+            leftEdge + (newWidth / 2f),
+            _healthFill.transform.position.y,
+            _healthFill.transform.position.z
+        );
     }
 
     private void Die()

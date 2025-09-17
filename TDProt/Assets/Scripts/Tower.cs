@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private float _shootDelay = 5f;
     [SerializeField] private float _bulletSpeed = 1f;
     [SerializeField] private float _bulletSplashRadius = 0f;
+    [SerializeField] private int _towerCost = 2; // стоимость башни для инспектора
 
     [SerializeField] private Bullet _bulletPrefab;
 
@@ -17,6 +18,7 @@ public class Tower : MonoBehaviour
     private Enemy _targetEnemy;
 
     public Vector2? PlacePosition { get; private set; }
+    public int TowerCost => _towerCost;
 
     public Sprite GetTowerHeadIcon()
     {
