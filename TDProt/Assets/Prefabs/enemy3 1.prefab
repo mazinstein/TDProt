@@ -125,11 +125,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b50232f75def6e4b96a0d49e64b5294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 1
+  _maxHealth: 10
   _moveSpeed: 1
   _healthBar: {fileID: 7429704434594011511}
   _healthFill: {fileID: 1471958198711511557}
   _coinReward: 3
+  _healthBarLerpSpeed: 8
 --- !u!60 &4061739814497269094
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -196,6 +197,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8156584187862564338}
     m_Modifications:
+    - target: {fileID: 1823386400770634741, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1891904485013153904, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
@@ -243,6 +248,10 @@ PrefabInstance:
     - target: {fileID: 4945951772057217679, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
       propertyPath: m_Name
       value: Enemy Health Bar 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654736980542259335, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
