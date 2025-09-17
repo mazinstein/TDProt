@@ -146,12 +146,12 @@ TextureImporter:
       name: Bullets_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 269
-        width: 59
-        height: 69
+        x: 26
+        y: 272
+        width: 61
+        height: 67
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: Bullets_1
       rect:
         serializedVersion: 2
-        x: 118
-        y: 265
-        width: 64
-        height: 64
+        x: 112
+        y: 257
+        width: 76
+        height: 66
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -190,12 +190,12 @@ TextureImporter:
       name: Bullets_2
       rect:
         serializedVersion: 2
-        x: 206
-        y: 266
-        width: 57
-        height: 55
+        x: 198
+        y: 260
+        width: 76
+        height: 66
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: Bullets_3
       rect:
         serializedVersion: 2
-        x: 23
-        y: 169
-        width: 62
-        height: 65
+        x: 26
+        y: 174
+        width: 55
+        height: 57
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,12 +234,12 @@ TextureImporter:
       name: Bullets_4
       rect:
         serializedVersion: 2
-        x: 125
-        y: 171
-        width: 47
-        height: 46
+        x: 131
+        y: 182
+        width: 34
+        height: 25
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -256,12 +256,12 @@ TextureImporter:
       name: Bullets_5
       rect:
         serializedVersion: 2
-        x: 204
-        y: 170
-        width: 49
-        height: 50
+        x: 211
+        y: 185
+        width: 34
+        height: 21
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -278,12 +278,12 @@ TextureImporter:
       name: Bullets_6
       rect:
         serializedVersion: 2
-        x: 28
-        y: 88
-        width: 54
-        height: 57
+        x: 25
+        y: 86
+        width: 58
+        height: 58
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,12 +300,12 @@ TextureImporter:
       name: Bullets_7
       rect:
         serializedVersion: 2
-        x: 133
-        y: 97
-        width: 33
-        height: 35
+        x: 138
+        y: 103
+        width: 23
+        height: 23
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -322,12 +322,12 @@ TextureImporter:
       name: Bullets_8
       rect:
         serializedVersion: 2
-        x: 34
-        y: 23
-        width: 44
-        height: 43
+        x: 39
+        y: 28
+        width: 34
+        height: 34
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -344,12 +344,12 @@ TextureImporter:
       name: Bullets_9
       rect:
         serializedVersion: 2
-        x: 132
-        y: 32
-        width: 39
-        height: 21
+        x: 137
+        y: 39
+        width: 29
+        height: 7
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -366,12 +366,12 @@ TextureImporter:
       name: Bullets_10
       rect:
         serializedVersion: 2
-        x: 202
-        y: 32
-        width: 57
-        height: 24
+        x: 210
+        y: 38
+        width: 44
+        height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -388,7 +388,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 368440f2a883141428d33a653318692e
     internalID: 0
     vertices: []
     indices: 

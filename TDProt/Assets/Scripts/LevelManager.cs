@@ -184,6 +184,14 @@ public class LevelManager : MonoBehaviour
     /// <summary>
     /// Spawner вызывает, когда он завершил все запланированные спавны.
     /// </summary>
+    /// 
+    public void UnregisterSpawnedTower(Tower tower)
+    {
+        if (tower == null) return;
+        if (_spawnedTowers.Contains(tower))
+            _spawnedTowers.Remove(tower);
+    }
+
     public void SetAllEnemiesSpawned()
     {
         _allEnemiesSpawned = true;

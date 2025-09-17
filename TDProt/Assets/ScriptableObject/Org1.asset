@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: enemy
   prefab: {fileID: 4418838872898356449, guid: 7d032e3a9cad39144a95c1b1e1e15224, type: 3}
-  baseHealth: 4
-  baseSpeed: 0.8
-  coinReward: 1
-  cost: 13
+  baseHealth: 10
+  baseSpeed: 1.7
+  coinReward: 3
+  cost: 9
   weight: 1
   unlockTime: 0
