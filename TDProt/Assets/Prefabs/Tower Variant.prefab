@@ -10,19 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _towerCost
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _shootDelay
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _shootPower
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _shootDistance
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: _bulletSplashRadius
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3247289874781832935, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

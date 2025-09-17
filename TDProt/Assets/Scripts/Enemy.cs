@@ -11,23 +11,39 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _coinReward = 1; // награда за убийство
 
     private int _currentHealth;
+    private SimplePool _ownerPool;
 
+    private Spawner _spawnerRef;
     public Vector3 TargetPosition { get; private set; }
     public int CurrentPathIndex { get; private set; }
-
+    
     private void OnEnable()
     {
         _currentHealth = _maxHealth;
-        _healthFill.size = _healthBar.size;
+        if (_healthBar != null && _healthFill != null)
+            _healthFill.size = _healthBar.size;
     }
 
     public void MoveToTarget()
     {
         transform.position = Vector3.MoveTowards(transform.position, TargetPosition, _moveSpeed * Time.deltaTime);
-        // Запрещаем любые повороты
         transform.rotation = Quaternion.identity;
     }
 
+    public void InitFromType(EnemyType type, SimplePool ownerPool, Spawner spawner = null)
+    {
+        if (type == null) return;
+        _ownerPool = ownerPool;
+        _spawnerRef = spawner;
+
+        _maxHealth = Mathf.Max(1, type.baseHealth);
+        _moveSpeed = Mathf.Max(0.01f, type.baseSpeed);
+        _coinReward = type.coinReward;
+        _currentHealth = _maxHealth;
+
+        if (_healthBar != null && _healthFill != null)
+            _healthFill.size = _healthBar.size;
+    }
     public void SetTargetPosition(Vector3 targetPosition)
     {
         TargetPosition = targetPosition;
@@ -67,13 +83,25 @@ public class Enemy : MonoBehaviour
         );
     }
 
-    private void Die()
+    public void Die()
     {
-        gameObject.SetActive(false);
-        // Добавляем монеты игроку
+        // уведомляем менеджер
         if (LevelManager.Instance != null)
-        {
             LevelManager.Instance.AddCoins(_coinReward);
+            Spawner s = FindObjectOfType<Spawner>();
+            if (s != null) s.NotifyEnemyDead();
+        if (_spawnerRef != null) _spawnerRef.NotifyEnemyDead();
+        else
+        {
+
+            if (s != null) s.NotifyEnemyDead();
         }
+
+
+        // возвращаем в пул, если он есть
+        if (_ownerPool != null)
+            _ownerPool.Release(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 }

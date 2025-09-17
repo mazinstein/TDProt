@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5660598341576065734}
+  - component: {fileID: 647444866207683573}
   - component: {fileID: 9098292126085484318}
   - component: {fileID: 7160053842563098903}
   - component: {fileID: 2416121001945748881}
-  - component: {fileID: 647444866207683573}
   m_Layer: 0
   m_Name: enemy2 1
   m_TagString: Untagged
@@ -36,6 +36,23 @@ Transform:
   - {fileID: 8224208140927910984}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647444866207683573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4418838872898356449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b50232f75def6e4b96a0d49e64b5294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 10
+  _moveSpeed: 1
+  _healthBar: {fileID: 168940073990728895}
+  _healthFill: {fileID: 8155698852779335629}
+  _coinReward: 1
 --- !u!212 &9098292126085484318
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -175,23 +192,6 @@ PolygonCollider2D:
       - {x: 0.255, y: 0.20699996}
       - {x: 0.255, y: 0.26699996}
   m_UseDelaunayMesh: 0
---- !u!114 &647444866207683573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4418838872898356449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b50232f75def6e4b96a0d49e64b5294, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 1
-  _moveSpeed: 1
-  _healthBar: {fileID: 168940073990728895}
-  _healthFill: {fileID: 8155698852779335629}
-  _coinReward: 2
 --- !u!1001 &7521896072332913720
 PrefabInstance:
   m_ObjectHideFlags: 0
