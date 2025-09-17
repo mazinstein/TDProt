@@ -9,45 +9,41 @@ public class Enemy : MonoBehaviour
     [SerializeField] private SpriteRenderer _healthBar;
     [SerializeField] private SpriteRenderer _healthFill;
     [SerializeField] private int _coinReward = 1; // награда за убийство
-    [SerializeField] private float _healthBarLerpSpeed = 8f; // скорость изменения полоски здоровья
 
     private int _currentHealth;
-    private float _currentHealthWidth;
-    private float _targetHealthWidth;
+    private SimplePool _ownerPool;
 
+    private Spawner _spawnerRef;
     public Vector3 TargetPosition { get; private set; }
     public int CurrentPathIndex { get; private set; }
-
+    
     private void OnEnable()
     {
         _currentHealth = _maxHealth;
-        _healthFill.size = _healthBar.size;
-        _currentHealthWidth = _healthBar.size.x;
-        _targetHealthWidth = _healthBar.size.x;
-    }
-
-    private void Update()
-    {
-        // Плавно изменяем ширину полоски
-        _currentHealthWidth = Mathf.Lerp(_currentHealthWidth, _targetHealthWidth, Time.deltaTime * _healthBarLerpSpeed);
-        _healthFill.size = new Vector2(_currentHealthWidth, _healthBar.size.y);
-
-        // Смещаем fill так, чтобы левый край оставался на месте
-        float leftEdge = _healthBar.transform.position.x - (_healthBar.size.x / 2f);
-        _healthFill.transform.position = new Vector3(
-            leftEdge + (_currentHealthWidth / 2f),
-            _healthFill.transform.position.y,
-            _healthFill.transform.position.z
-        );
+        if (_healthBar != null && _healthFill != null)
+            _healthFill.size = _healthBar.size;
     }
 
     public void MoveToTarget()
     {
         transform.position = Vector3.MoveTowards(transform.position, TargetPosition, _moveSpeed * Time.deltaTime);
-        // Запрещаем любые повороты
         transform.rotation = Quaternion.identity;
     }
 
+    public void InitFromType(EnemyType type, SimplePool ownerPool, Spawner spawner = null)
+    {
+        if (type == null) return;
+        _ownerPool = ownerPool;
+        _spawnerRef = spawner;
+
+        _maxHealth = Mathf.Max(1, type.baseHealth);
+        _moveSpeed = Mathf.Max(0.01f, type.baseSpeed);
+        _coinReward = type.coinReward;
+        _currentHealth = _maxHealth;
+
+        if (_healthBar != null && _healthFill != null)
+            _healthFill.size = _healthBar.size;
+    }
     public void SetTargetPosition(Vector3 targetPosition)
     {
         TargetPosition = targetPosition;
@@ -75,16 +71,37 @@ public class Enemy : MonoBehaviour
         }
 
         float healthPercentage = (float)_currentHealth / _maxHealth;
-        _targetHealthWidth = healthPercentage * _healthBar.size.x;
+        float newWidth = healthPercentage * _healthBar.size.x;
+        _healthFill.size = new Vector2(newWidth, _healthBar.size.y);
+
+        // Смещаем fill так, чтобы левый край оставался на месте
+        float leftEdge = _healthBar.transform.position.x - (_healthBar.size.x / 2f);
+        _healthFill.transform.position = new Vector3(
+            leftEdge + (newWidth / 2f),
+            _healthFill.transform.position.y,
+            _healthFill.transform.position.z
+        );
     }
 
-    private void Die()
+    public void Die()
     {
-        gameObject.SetActive(false);
-        // Добавляем монеты игроку
+        // уведомляем менеджер
         if (LevelManager.Instance != null)
-        {
             LevelManager.Instance.AddCoins(_coinReward);
+            Spawner s = FindObjectOfType<Spawner>();
+            if (s != null) s.NotifyEnemyDead();
+        if (_spawnerRef != null) _spawnerRef.NotifyEnemyDead();
+        else
+        {
+
+            if (s != null) s.NotifyEnemyDead();
         }
+
+
+        // возвращаем в пул, если он есть
+        if (_ownerPool != null)
+            _ownerPool.Release(gameObject);
+        else
+            gameObject.SetActive(false);
     }
 }

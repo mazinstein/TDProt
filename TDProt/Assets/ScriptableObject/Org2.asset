@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe4462bb52e38124eb16d589d93154af, type: 3}
+  m_Name: Org2
+  m_EditorClassIdentifier: 
+  id: enemy
+  prefab: {fileID: 646584266551620413, guid: 8f9ade1dbe6d8864c8c5351f3d5de105, type: 3}
+  baseHealth: 8
+  baseSpeed: 0.6
+  coinReward: 2
+  cost: 20
+  weight: 1
+  unlockTime: 0

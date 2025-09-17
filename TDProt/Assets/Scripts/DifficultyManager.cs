@@ -1,0 +1,28 @@
+// DifficultyManager.cs
+using UnityEngine;
+
+public class DifficultyManager : MonoBehaviour
+{
+    public Spawner spawner;
+    public float adjustInterval = 15f;
+    public float playerWinRateThreshold = 0.7f; // ??????
+    private float timer = 0f;
+
+    void Update()
+    {
+        if (spawner == null) return;
+        timer += Time.deltaTime;
+        if (timer >= adjustInterval)
+        {
+            timer = 0f;
+            // ??????? ??????: ???? ? ?????? ????? ????? ? ???? ?????? — ???????? ?????????
+            float coins = LevelManager.Instance != null ? LevelManager.Instance.CoinsSafe : 0f;
+            int lives = LevelManager.Instance != null ? LevelManager.Instance.GetLivesSafe() : 1;
+            // ?????? ???????:
+            if (coins > 20 && lives == LevelManager.Instance.MaxLives)
+                spawner.budgetEnd *= 1.06f; // ????????? ????
+            else if (lives < 1)
+                spawner.budgetEnd *= 0.95f;
+        }
+    }
+}
