@@ -42,15 +42,9 @@ public class TowerPanelUI : MonoBehaviour
 
     public void Refresh()
     {
-        if (_currentTower == null)
-        {
-            Hide();
-            return;
-        }
+        if (_currentTower == null) { Hide(); return; }
 
-        string nm = _currentTower.gameObject.name.Replace("(Clone)", "").Trim();
-        if (titleText != null) titleText.text = nm;
-
+        if (titleText != null) titleText.text = _currentTower.gameObject.name.Replace("(Clone)", "").Trim();
         if (levelText != null) levelText.text = $"Level: {_currentTower.CurrentLevel}/{_currentTower.MaxLevel}";
 
         int upCost = _currentTower.GetUpgradeCost();
