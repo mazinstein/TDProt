@@ -11,6 +11,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int _coinReward = 1; // награда за убийство
 
     private int _currentHealth;
+
+    // Для плавного изменения полоски
+    private float _targetHealthWidth;
+    private float _currentHealthWidth;
+    [SerializeField] private float _healthBarLerpSpeed = 8f;
+
     private SimplePool _ownerPool;
 
     private Spawner _spawnerRef;
@@ -20,8 +26,25 @@ public class Enemy : MonoBehaviour
     private void OnEnable()
     {
         _currentHealth = _maxHealth;
+        _targetHealthWidth = _healthBar.size.x;
+        _currentHealthWidth = _healthBar.size.x;
         if (_healthBar != null && _healthFill != null)
             _healthFill.size = _healthBar.size;
+    }
+
+    private void Update()
+    {
+        // Плавно изменяем ширину полоски
+        _currentHealthWidth = Mathf.Lerp(_currentHealthWidth, _targetHealthWidth, Time.deltaTime * _healthBarLerpSpeed);
+        _healthFill.size = new Vector2(_currentHealthWidth, _healthBar.size.y);
+
+        // Смещаем fill так, чтобы левый край оставался на месте
+        float leftEdge = _healthBar.transform.position.x - (_healthBar.size.x / 2f);
+        _healthFill.transform.position = new Vector3(
+            leftEdge + (_currentHealthWidth / 2f),
+            _healthFill.transform.position.y,
+            _healthFill.transform.position.z
+        );
     }
 
     public void MoveToTarget()
@@ -71,16 +94,7 @@ public class Enemy : MonoBehaviour
         }
 
         float healthPercentage = (float)_currentHealth / _maxHealth;
-        float newWidth = healthPercentage * _healthBar.size.x;
-        _healthFill.size = new Vector2(newWidth, _healthBar.size.y);
-
-        // Смещаем fill так, чтобы левый край оставался на месте
-        float leftEdge = _healthBar.transform.position.x - (_healthBar.size.x / 2f);
-        _healthFill.transform.position = new Vector3(
-            leftEdge + (newWidth / 2f),
-            _healthFill.transform.position.y,
-            _healthFill.transform.position.z
-        );
+        _targetHealthWidth = healthPercentage * _healthBar.size.x;
     }
 
     public void Die()

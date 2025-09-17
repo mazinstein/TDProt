@@ -1,0 +1,585 @@
+fileFormatVersion: 2
+guid: f6cdc85ba4d674249bb23957e157277e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6066861309190793882
+    second: Guard_lvl_1_95px_0
+  - first:
+      213: -4767226716036755119
+    second: Guard_lvl_1_95px_1
+  - first:
+      213: -3463677279645719578
+    second: Guard_lvl_1_95px_2
+  - first:
+      213: -366041349125164673
+    second: Guard_lvl_1_95px_3
+  - first:
+      213: -2037625842403230914
+    second: Guard_lvl_1_95px_4
+  - first:
+      213: -2241467393628920861
+    second: Guard_lvl_1_95px_5
+  - first:
+      213: -2008030146254308820
+    second: Guard_lvl_1_95px_6
+  - first:
+      213: -7634999693017826688
+    second: Guard_lvl_1_95px_7
+  - first:
+      213: -6927234478587608745
+    second: Guard_lvl_1_95px_8
+  - first:
+      213: -3420684313326864693
+    second: Guard_lvl_1_95px_9
+  - first:
+      213: 4082377266437528882
+    second: Guard_lvl_1_95px_10
+  - first:
+      213: 5649422586390815403
+    second: Guard_lvl_1_95px_11
+  - first:
+      213: -6181432916878351565
+    second: Guard_lvl_1_95px_12
+  - first:
+      213: 6052891392680068221
+    second: Guard_lvl_1_95px_13
+  - first:
+      213: -7758911832659943738
+    second: Guard_lvl_1_95px_14
+  - first:
+      213: 8199268080217549195
+    second: Guard_lvl_1_95px_15
+  - first:
+      213: 3296497654919341872
+    second: Guard_lvl_1_95px_16
+  - first:
+      213: -4023998083704097593
+    second: Guard_lvl_1_95px_17
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 208
+        width: 66
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6651f1c68cd2ecba0800000000000000
+      internalID: -6066861309190793882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_1
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 208
+        width: 51
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15190e24f8867ddb0800000000000000
+      internalID: -4767226716036755119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_2
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 208
+        width: 55
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e320229ddb8eefc0800000000000000
+      internalID: -3463677279645719578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_3
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 208
+        width: 80
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f713a44155f8beaf0800000000000000
+      internalID: -366041349125164673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_4
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 208
+        width: 76
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b36669716e8b3e0800000000000000
+      internalID: -2037625842403230914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_5
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 208
+        width: 75
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e3a0230845b4e0e0800000000000000
+      internalID: -2241467393628920861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_6
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 113
+        width: 68
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2a7c32983b0224e0800000000000000
+      internalID: -2008030146254308820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_7
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 113
+        width: 66
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08ab47d2b380b0690800000000000000
+      internalID: -7634999693017826688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_8
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 113
+        width: 64
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75182fb91f48ddf90800000000000000
+      internalID: -6927234478587608745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_9
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 113
+        width: 54
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc6b6679db94780d0800000000000000
+      internalID: -3420684313326864693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_10
+      rect:
+        serializedVersion: 2
+        x: 402
+        y: 113
+        width: 57
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23d93259e7487a830800000000000000
+      internalID: 4082377266437528882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_11
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 113
+        width: 62
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba2a4ef09e7c66e40800000000000000
+      internalID: 5649422586390815403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_12
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 18
+        width: 73
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3332f824383273aa0800000000000000
+      internalID: -6181432916878351565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_13
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 18
+        width: 73
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7407bce6a0300450800000000000000
+      internalID: 6052891392680068221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_14
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 16
+        width: 76
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ce9ab2fbcec25490800000000000000
+      internalID: -7758911832659943738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_15
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 16
+        width: 83
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b89e09b90e6a9c170800000000000000
+      internalID: 8199268080217549195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_16
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 9
+        width: 84
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 037206cc6238fbd20800000000000000
+      internalID: 3296497654919341872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guard_lvl_1_95px_17
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 9
+        width: 96
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c4f6fb1013e728c0800000000000000
+      internalID: -4023998083704097593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Guard_lvl_1_95px_0: -6066861309190793882
+      Guard_lvl_1_95px_1: -4767226716036755119
+      Guard_lvl_1_95px_10: 4082377266437528882
+      Guard_lvl_1_95px_11: 5649422586390815403
+      Guard_lvl_1_95px_12: -6181432916878351565
+      Guard_lvl_1_95px_13: 6052891392680068221
+      Guard_lvl_1_95px_14: -7758911832659943738
+      Guard_lvl_1_95px_15: 8199268080217549195
+      Guard_lvl_1_95px_16: 3296497654919341872
+      Guard_lvl_1_95px_17: -4023998083704097593
+      Guard_lvl_1_95px_2: -3463677279645719578
+      Guard_lvl_1_95px_3: -366041349125164673
+      Guard_lvl_1_95px_4: -2037625842403230914
+      Guard_lvl_1_95px_5: -2241467393628920861
+      Guard_lvl_1_95px_6: -2008030146254308820
+      Guard_lvl_1_95px_7: -7634999693017826688
+      Guard_lvl_1_95px_8: -6927234478587608745
+      Guard_lvl_1_95px_9: -3420684313326864693
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
