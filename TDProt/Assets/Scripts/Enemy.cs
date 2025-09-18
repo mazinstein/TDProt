@@ -38,12 +38,13 @@ public class Enemy : MonoBehaviour
         _currentHealthWidth = Mathf.Lerp(_currentHealthWidth, _targetHealthWidth, Time.deltaTime * _healthBarLerpSpeed);
         _healthFill.size = new Vector2(_currentHealthWidth, _healthBar.size.y);
 
-        // Смещаем fill так, чтобы левый край оставался на месте
-        float leftEdge = _healthBar.transform.position.x - (_healthBar.size.x / 2f);
-        _healthFill.transform.position = new Vector3(
-            leftEdge + (_currentHealthWidth / 2f),
-            _healthFill.transform.position.y,
-            _healthFill.transform.position.z
+        // Смещаем fill так, чтобы левый край был на месте
+        // Вместо transform.position используем transform.localPosition
+        float leftEdgeLocal = _healthBar.transform.localPosition.x - (_healthBar.size.x / 2f);
+        _healthFill.transform.localPosition = new Vector3(
+            leftEdgeLocal + (_currentHealthWidth / 2f),
+            _healthFill.transform.localPosition.y,
+            _healthFill.transform.localPosition.z
         );
     }
 
@@ -86,15 +87,15 @@ public class Enemy : MonoBehaviour
     public void ReduceEnemyHealth(int damage)
     {
         _currentHealth -= damage;
+        _currentHealth = Mathf.Max(_currentHealth, 0);
+
+        // Просто обновляем целевую ширину полоски
+        _targetHealthWidth = _healthBar.size.x * (_currentHealth / (float)_maxHealth);
 
         if (_currentHealth <= 0)
         {
-            _currentHealth = 0;
             Die();
         }
-
-        float healthPercentage = (float)_currentHealth / _maxHealth;
-        _targetHealthWidth = healthPercentage * _healthBar.size.x;
     }
 
     public void Die()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 /// <summary>
 /// LevelManager — контролирует UI, жизнь/монеты, логику башен и движение врагов.
@@ -32,12 +33,8 @@ public class LevelManager : MonoBehaviour
     private List<Tower> _spawnedTowers = new List<Tower>();
 
     [Header("Enemies (for compatibility)")]
-    // В большинстве случаев спавн делегирован Spawner; оставляем массив префабов как запасной вариант
     [SerializeField] private Enemy[] _enemyPrefabs;
     [SerializeField] private Transform[] _enemyPaths;
-
-    // Старый таймер спавна больше не используется — спавн контролирует Spawner
-    // [SerializeField] private float _spawnDelay = 5f;
 
     private List<Enemy> _spawnedEnemies = new List<Enemy>();
     private List<Bullet> _spawnedBullets = new List<Bullet>();
@@ -46,7 +43,7 @@ public class LevelManager : MonoBehaviour
 
     [Header("Game Settings")]
     [SerializeField] private int _maxLives = 3;
-    [SerializeField] private int _totalEnemy = 15; // остаётся, чтобы показывать в UI при необходимости
+    [SerializeField] private int _totalEnemy = 15;
 
     [Header("UI Elements")]
     [SerializeField] private GameObject _panel;
@@ -57,24 +54,26 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Button nextLevelButton;
 
     [Header("Economy")]
-    [SerializeField] private int _startCoins = 5; // стартовое количество монет
+    [SerializeField] private int _startCoins = 5;
     [SerializeField] private TextMeshProUGUI _coinsInfo;
     private int _currentCoins;
 
     private int _currentLives;
 
-    // Флаги/состояния для интеграции со Spawner
-    private bool _allEnemiesSpawned = false; // spawner установит true, когда больше не будет спавнов
-    // Примечание: "_enemyCounter" можно оставить для отображения в UI, но реальное спавниг-логика вне LevelManager
+    private bool _allEnemiesSpawned = false;
     private int _enemyCounter;
     private int killedEnemies = 0;
 
     [Header("Victory UI")]
     [SerializeField] private GameObject victoryPanel;
 
+    [Header("Hearts UI")]
+    [SerializeField] private GameObject heartPrefab;
+    [SerializeField] private Transform heartsParent;
+    private List<Image> hearts = new List<Image>();
+
     private void Awake()
     {
-        // Защита синглтона (не уничтожаемый не нужен для этой сцены, просто базовая проверка)
         if (_instance == null) _instance = this;
         else if (_instance != this) Destroy(gameObject);
     }
@@ -88,6 +87,7 @@ public class LevelManager : MonoBehaviour
         UpdateCoinsUI();
 
         InstantiateAllTowerUI();
+        CreateHearts();
     }
 
     private void Update()
@@ -97,7 +97,6 @@ public class LevelManager : MonoBehaviour
 
         if (IsOver) return;
 
-        // Управление башнями — без изменений
         foreach (Tower tower in _spawnedTowers)
         {
             if (tower == null) continue;
@@ -106,14 +105,12 @@ public class LevelManager : MonoBehaviour
             tower.ShootTarget();
         }
 
-        // Логика и движение врагов
         for (int i = 0; i < _spawnedEnemies.Count; i++)
         {
             Enemy enemy = _spawnedEnemies[i];
             if (enemy == null) continue;
             if (!enemy.gameObject.activeSelf) continue;
 
-            // Если враг достиг текущей цели
             if (Vector2.Distance(enemy.transform.position, enemy.TargetPosition) < 0.1f)
             {
                 enemy.SetCurrentPathIndex(enemy.CurrentPathIndex + 1);
@@ -123,13 +120,8 @@ public class LevelManager : MonoBehaviour
                 }
                 else
                 {
-                    // Враг дошёл до базы
                     ReduceLives(1);
-
-                    // Деактивируем и даём спавнеру знать (если нужно)
                     enemy.gameObject.SetActive(false);
-
-                    // оповестим об деактивации (удаление/логирование при желании)
                     OnEnemyDeactivated(enemy);
                 }
             }
@@ -139,8 +131,6 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        // Условия победы:
-        // Если Spawner сказал, что больше врагов не будет (_allEnemiesSpawned) и активных врагов нет -> win
         if (_allEnemiesSpawned && !ExistsActiveEnemy())
         {
             SetGameOver(true);
@@ -148,29 +138,17 @@ public class LevelManager : MonoBehaviour
     }
 
     #region Registration / Integration
-    /// <summary>
-    /// Вызывать из Spawner сразу после активации/инициализации врага.
-    /// LevelManager начнёт обновлять и контролировать врага в Update().
-    /// </summary>
     public void RegisterSpawnedEnemy(Enemy enemy)
     {
         if (enemy == null) return;
-
-        // защита от дублирования
         if (!_spawnedEnemies.Contains(enemy))
             _spawnedEnemies.Add(enemy);
 
-        // Если у нас задан маршрут, выставляем старт и первую цель
         if (_enemyPaths != null && _enemyPaths.Length >= 2)
         {
-            // Ставим врага ровно на старт (переопределяем спавн-позицию spawner'а, если нужно)
             enemy.transform.position = _enemyPaths[0].position;
-
-            // Первый реальный шаг — индекс 1, цель = paths[1]
             enemy.SetCurrentPathIndex(1);
             enemy.SetTargetPosition(_enemyPaths[1].position);
-
-            // Визуальная помощь в редакторе: покажем линию направления на кадр
             Debug.DrawLine(enemy.transform.position, enemy.TargetPosition, Color.red, 2f);
         }
         else
@@ -178,7 +156,6 @@ public class LevelManager : MonoBehaviour
             Debug.LogWarning("LevelManager.RegisterSpawnedEnemy: enemyPaths not configured or too short. Enemy will not move.", this);
         }
 
-        // Обновление счётчика в UI (если нужен)
         _enemyCounter = Mathf.Max(_enemyCounter - 1, 0);
         if (_totalEnemyInfo != null)
             _totalEnemyInfo.text = $"Total Enemy: {Mathf.Max(_enemyCounter, 0)}";
@@ -186,11 +163,6 @@ public class LevelManager : MonoBehaviour
         Debug.Log($"Registered enemy '{enemy.name}' pos={enemy.transform.position} target={enemy.TargetPosition}", this);
     }
 
-
-    /// <summary>
-    /// Spawner вызывает, когда он завершил все запланированные спавны.
-    /// </summary>
-    /// 
     public void UnregisterSpawnedTower(Tower tower)
     {
         if (tower == null) return;
@@ -202,7 +174,6 @@ public class LevelManager : MonoBehaviour
     {
         _allEnemiesSpawned = true;
         Debug.Log("LevelManager: SetAllEnemiesSpawned called, _allEnemiesSpawned set to true");
-        // Проверяем победу сразу после установки флага
         if (!_spawnedEnemies.Exists(e => e != null && e.gameObject.activeSelf))
         {
             Debug.Log("Victory condition met in SetAllEnemiesSpawned, calling SetGameOver(true)");
@@ -210,10 +181,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Вызывать из Enemy.Die() или где-то при деактивации врага — чтобы мы могли реагировать.
-    /// Текущая реализация оставляет объект в списке, но при желании здесь можно удалять из списка.
-    /// </summary>
     public void OnEnemyDeactivated(Enemy enemy)
     {
         killedEnemies++;
@@ -223,7 +190,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("All enemies killed! Showing victory panel.");
             SetGameOver(true);
-        } 
+        }
     }
     #endregion
 
@@ -269,7 +236,6 @@ public class LevelManager : MonoBehaviour
     #region Explosions
     public void ExplodeAt(Vector2 point, float radius, int damage)
     {
-        // Создаём копию списка для безопасного перебора
         var enemiesCopy = new List<Enemy>(_spawnedEnemies);
         foreach (Enemy enemy in enemiesCopy)
         {
@@ -292,6 +258,8 @@ public class LevelManager : MonoBehaviour
         _currentLives = Mathf.Max(currentLives, 0);
         if (_livesInfo != null)
             _livesInfo.text = $"Lives: {_currentLives}";
+
+        UpdateHearts();
     }
 
     public void SetGameOver(bool isWin)
@@ -304,12 +272,11 @@ public class LevelManager : MonoBehaviour
         if (_panel != null)
             _panel.SetActive(true);
 
-        // Управляем видимостью кнопок
         if (restartButton != null)
-            restartButton.gameObject.SetActive(true); // всегда показываем
+            restartButton.gameObject.SetActive(true);
 
         if (nextLevelButton != null)
-            nextLevelButton.gameObject.SetActive(isWin); // только при победе
+            nextLevelButton.gameObject.SetActive(isWin);
     }
     #endregion
 
@@ -347,8 +314,49 @@ public class LevelManager : MonoBehaviour
     }
     #endregion
 
+    #region Hearts UI
+    private void CreateHearts()
+    {
+        for (int i = 0; i < _maxLives; i++)
+        {
+            GameObject heartObj = Instantiate(heartPrefab, heartsParent);
+            Image heartImg = heartObj.GetComponent<Image>();
+            hearts.Add(heartImg);
+        }
+        UpdateHearts();
+    }
+
+    private void UpdateHearts()
+    {
+        for (int i = 0; i < hearts.Count; i++)
+        {
+            if (i < _currentLives)
+            {
+                if (!hearts[i].enabled)
+                {
+                    hearts[i].enabled = true;
+                    hearts[i].transform.localScale = Vector3.zero;
+                    hearts[i].transform.DOScale(Vector3.one, 0.3f).SetEase(Ease.OutBack);
+                }
+            }
+            else
+            {
+                if (hearts[i].enabled)
+                {
+                    Image img = hearts[i];
+                    img.transform.DOShakePosition(0.3f, 5f, 10, 90, false, true);
+                    img.DOColor(Color.red, 0.15f).SetLoops(2, LoopType.Yoyo);
+                    img.transform
+                        .DOScale(Vector3.zero, 0.3f)
+                        .SetEase(Ease.InBack)
+                        .OnComplete(() => img.enabled = false);
+                }
+            }
+        }
+    }
+    #endregion
+
     #region Utilities / Info
-    // Публичные геттеры для внешних систем (DifficultyManager и т.п.)
     public int CoinsSafe => _currentCoins;
     public int GetLivesSafe() => _currentLives;
     public int MaxLives => _maxLives;
