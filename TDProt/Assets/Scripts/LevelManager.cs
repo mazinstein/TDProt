@@ -53,6 +53,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Text _statusInfo;
     [SerializeField] private Text _livesInfo;
     [SerializeField] private Text _totalEnemyInfo;
+    [SerializeField] private Button restartButton;
+    [SerializeField] private Button nextLevelButton;
 
     [Header("Economy")]
     [SerializeField] private int _startCoins = 5; // стартовое количество монет
@@ -295,21 +297,19 @@ public class LevelManager : MonoBehaviour
     public void SetGameOver(bool isWin)
     {
         IsOver = true;
-        Debug.Log($"SetGameOver called. isWin={isWin}, _panel={_panel}, _statusInfo={_statusInfo}");
 
         if (_statusInfo != null)
             _statusInfo.text = isWin ? "You Win!" : "You Lose!";
-        else
-            Debug.LogWarning("StatusInfo is not assigned!");
 
         if (_panel != null)
             _panel.SetActive(true);
-        else
-            Debug.LogWarning("Panel is not assigned!");
 
-        // Показываем VictoryPanel только при победе
-        if (isWin && victoryPanel != null)
-            victoryPanel.SetActive(true);
+        // Управляем видимостью кнопок
+        if (restartButton != null)
+            restartButton.gameObject.SetActive(true); // всегда показываем
+
+        if (nextLevelButton != null)
+            nextLevelButton.gameObject.SetActive(isWin); // только при победе
     }
     #endregion
 
