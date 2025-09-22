@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioClip backgroundMusicClip;
 
+    [SerializeField] private bool musicEnabled = true;
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,7 +32,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBackgroundMusic()
     {
-        if (musicSource != null && backgroundMusicClip != null)
+        if (musicSource != null && backgroundMusicClip != null && musicEnabled)
         {
             musicSource.clip = backgroundMusicClip;
             musicSource.loop = true;
@@ -42,5 +44,24 @@ public class SoundManager : MonoBehaviour
     {
         if (musicSource != null)
             musicSource.Stop();
+    }
+
+    public bool IsMusicEnabled => musicEnabled;
+
+    public void ToggleMusic()
+    {
+        musicEnabled = !musicEnabled;
+        if (musicSource == null) return;
+
+        if (musicEnabled)
+        {
+            // Продолжаем музыку с того же места
+            musicSource.UnPause();
+        }
+        else
+        {
+            // Ставим музыку на паузу
+            musicSource.Pause();
+        }
     }
 }
