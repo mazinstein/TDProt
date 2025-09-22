@@ -6,6 +6,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip buttonClickClip;
 
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip backgroundMusicClip;
+
     private void Awake()
     {
         if (Instance == null)
@@ -19,21 +22,25 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void PlayButtonClickSound()
     {
         if (audioSource != null && buttonClickClip != null)
             audioSource.PlayOneShot(buttonClickClip);
+    }
+
+    public void PlayBackgroundMusic()
+    {
+        if (musicSource != null && backgroundMusicClip != null)
+        {
+            musicSource.clip = backgroundMusicClip;
+            musicSource.loop = true;
+            musicSource.Play();
+        }
+    }
+
+    public void StopBackgroundMusic()
+    {
+        if (musicSource != null)
+            musicSource.Stop();
     }
 }
