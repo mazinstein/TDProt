@@ -273,7 +273,17 @@ public class LevelManager : MonoBehaviour
             _panel.SetActive(true);
 
         if (restartButton != null)
+        {
             restartButton.gameObject.SetActive(true);
+            if (!isWin)
+            {
+                // Центрируем и смещаем кнопку чуть ниже центра
+                var rt = restartButton.GetComponent<RectTransform>();
+                rt.anchorMin = rt.anchorMax = new Vector2(0.5f, 0.5f);
+                rt.pivot = new Vector2(0.5f, 0.5f);
+                rt.anchoredPosition = new Vector2(0, -100); // смещение вниз на 100
+            }
+        }
 
         if (nextLevelButton != null)
             nextLevelButton.gameObject.SetActive(isWin);
