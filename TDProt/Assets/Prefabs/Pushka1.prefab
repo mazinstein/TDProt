@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5976919842023313470}
   - component: {fileID: 7967758249655883620}
   m_Layer: 3
-  m_Name: Tower
+  m_Name: Pushka1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +118,10 @@ MonoBehaviour:
   _upgradeRangeMultiplier: 1.06
   _upgradeDelayMultiplier: 0.92
   _upgradeCostMultiplier: 1.7
+  _upgradeOptions:
+  - {fileID: 11400000, guid: 25eb24036b4196740af2b7d21919bcec, type: 2}
+  - {fileID: 11400000, guid: d15b464f92967684b9e362e37aee2c33, type: 2}
+  - {fileID: 11400000, guid: ed82dbfd8e9d7bd43855d8fa47d7fe1a, type: 2}
   _bulletPrefab: {fileID: 2405264904785137108, guid: 5269b4c729ba199439c6f3292696e24a, type: 3}
 --- !u!61 &3247289874781832935
 BoxCollider2D:
@@ -231,8 +235,8 @@ Transform:
   m_GameObject: {fileID: 8752510878344868752}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6399057323116866929}
@@ -281,7 +285,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1281890600674870062, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+  m_Sprite: {fileID: 6740741442962960701, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

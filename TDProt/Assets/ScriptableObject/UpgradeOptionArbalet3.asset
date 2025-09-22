@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21f05e1eebdc8f40885b9b94635c82e, type: 3}
+  m_Name: UpgradeOptionArbalet3
+  m_EditorClassIdentifier: 
+  optionId: 
+  icon: {fileID: -7787868209760199401, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+  cost: 10
+  addPower: 5
+  mulPower: 1
+  addRange: 0
+  mulRange: 1
+  addDelay: 0
+  mulDelay: 1
+  replaceWithPrefab: 0
+  replacementPrefab: {fileID: 0}
