@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject firstPauseButton;
     [SerializeField] private CanvasGroup pauseCanvasGroup;
     [SerializeField] private float fadeDuration = 0.3f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip buttonClickClip;
 
     private bool isPaused = false;
     private static Stack<string> sceneHistory = new Stack<string>();
@@ -41,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        AudioListener.pause = false; // ÑÐ±Ñ€Ð¾ÑÐ¸Ñ‚ÑŒ Ð¿Ð°ÑƒÐ·Ñƒ Ð°ÑƒÐ´Ð¸Ð¾
         if (!DoesSceneExist(sceneName))
         {
             Debug.LogError($"Scene {sceneName} not found in build settings!");
@@ -54,9 +59,9 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToPreviousScene()
     {
-        if (sceneHistory.Count > 1) // Â ñòåêå åñòü ïðåäûäóùàÿ ñöåíà
+        if (sceneHistory.Count > 1) // Ã‚ Ã±Ã²Ã¥ÃªÃ¥ Ã¥Ã±Ã²Ã¼ Ã¯Ã°Ã¥Ã¤Ã»Ã¤Ã³Ã¹Ã Ã¿ Ã±Ã¶Ã¥Ã­Ã 
         {
-            sceneHistory.Pop(); // Óäàëÿåì òåêóùóþ ñöåíó
+            sceneHistory.Pop(); // Ã“Ã¤Ã Ã«Ã¿Ã¥Ã¬ Ã²Ã¥ÃªÃ³Ã¹Ã³Ã¾ Ã±Ã¶Ã¥Ã­Ã³
             string previousScene = sceneHistory.Peek();
             Time.timeScale = 1f;
             SceneManager.LoadScene(previousScene);
@@ -84,17 +89,26 @@ public class GameManager : MonoBehaviour
     #region Game Flow
     public void StartGame()
     {
+        PlayButtonClickSound();
         LoadScene("Game");
     }
 
     public void RestartLevel()
     {
+        StartCoroutine(PlaySoundAndRestartLevel());
+    }
+
+    private IEnumerator PlaySoundAndRestartLevel()
+    {
+        PlayButtonClickSound();
+        yield return new WaitForSeconds(0.15f);
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void QuitGame()
     {
+        PlayButtonClickSound();
         PlayerPrefs.Save();
 
 #if UNITY_EDITOR
@@ -103,15 +117,19 @@ public class GameManager : MonoBehaviour
         Application.Quit();
 #endif
     }
-    #endregion
 
-    #region Menu Navigation
     public void LoadMainMenu()
     {
+        PlayButtonClickSound();
+        Time.timeScale = 1f;
+        AudioListener.pause = false;
+        isPaused = false;
         sceneHistory.Clear();
         LoadScene("MainMenu");
     }
+    #endregion
 
+    #region Menu Navigation
     public void LoadSettingsScene()
     {
         LoadScene("Settings");
@@ -187,11 +205,24 @@ public class GameManager : MonoBehaviour
         }
         pauseCanvasGroup.alpha = 0;
         pauseMenu.SetActive(false);
+        AudioListener.pause = false;
     }
     #endregion
 
     public void LoadLevel2()
     {
+        StartCoroutine(PlaySoundAndLoadLevel2());
+    }
+
+    private IEnumerator PlaySoundAndLoadLevel2()
+    {
+        PlayButtonClickSound();
+        yield return new WaitForSeconds(0.15f);
         LoadScene("Level2");
+    }
+
+    public void PlayButtonClickSound()
+    {
+        SoundManager.Instance?.PlayButtonClickSound();
     }
 }
