@@ -56,6 +56,7 @@ public class LevelManager : MonoBehaviour
     [Header("Economy")]
     [SerializeField] private int _startCoins = 5;
     [SerializeField] private TextMeshProUGUI _coinsInfo;
+    [SerializeField] private Image _coinIcon; // <-- добавьте это поле
     private int _currentCoins;
 
     private int _currentLives;
@@ -315,12 +316,26 @@ public class LevelManager : MonoBehaviour
     {
         _currentCoins += amount;
         UpdateCoinsUI();
+        AnimateCoinEffect();
     }
 
     private void UpdateCoinsUI()
     {
         if (_coinsInfo != null)
-            _coinsInfo.text = $"Coins: {_currentCoins}";
+            _coinsInfo.text = _currentCoins.ToString();
+    }
+
+    private void AnimateCoinEffect()
+    {
+
+        if (_coinIcon != null)
+        {
+            _coinIcon.transform.DOKill();
+            _coinIcon.transform.localScale = Vector3.one;
+            _coinIcon.transform.DOScale(1.3f, 0.15f)
+                .SetLoops(2, LoopType.Yoyo)
+                .SetEase(Ease.OutBack);
+        }
     }
     #endregion
 
