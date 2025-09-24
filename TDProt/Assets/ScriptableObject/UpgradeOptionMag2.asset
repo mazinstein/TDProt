@@ -21,5 +21,5 @@ MonoBehaviour:
   mulRange: 1
   addDelay: 0
   mulDelay: 1
-  replaceWithPrefab: 0
-  replacementPrefab: {fileID: 0}
+  replaceWithPrefab: 1
+  replacementPrefab: {fileID: 6959069273343871193, guid: 19239627a0036fa4984b734642ae99f0, type: 3}

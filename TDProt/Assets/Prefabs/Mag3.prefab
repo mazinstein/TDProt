@@ -68,18 +68,10 @@ PrefabInstance:
       propertyPath: '_upgradeOptions.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: e59f562fd9e37334ab057b5e1eec2084, type: 2}
-    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
-      propertyPath: '_classicUpgradeIcons.Array.data[0]'
-      value: 
-      objectReference: {fileID: -8521668003564699467, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
-    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
-      propertyPath: '_classicUpgradeIcons.Array.data[1]'
-      value: 
-      objectReference: {fileID: 4070518175746698545, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
     - target: {fileID: 555378610994625886, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -3562724673036553761, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+      objectReference: {fileID: 1965602982903682235, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
     - target: {fileID: 3247289874781832935, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Size.x
       value: 1.4793081
@@ -106,12 +98,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3847651385577440083, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Name
-      value: Mag1
+      value: Mag3
       objectReference: {fileID: 0}
     - target: {fileID: 4145847168455039737, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7805974314214195127, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+      objectReference: {fileID: -3562724673036553761, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
     - target: {fileID: 5194458177664845562, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -130,11 +122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -5.45
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalPosition.z
