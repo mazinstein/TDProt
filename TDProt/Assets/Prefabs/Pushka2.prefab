@@ -119,9 +119,7 @@ MonoBehaviour:
   _upgradeDelayMultiplier: 0.92
   _upgradeCostMultiplier: 1.7
   _upgradeOptions:
-  - {fileID: 11400000, guid: 25eb24036b4196740af2b7d21919bcec, type: 2}
   - {fileID: 11400000, guid: d15b464f92967684b9e362e37aee2c33, type: 2}
-  - {fileID: 11400000, guid: ed82dbfd8e9d7bd43855d8fa47d7fe1a, type: 2}
   _bulletPrefab: {fileID: 2405264904785137108, guid: 5269b4c729ba199439c6f3292696e24a, type: 3}
 --- !u!61 &3247289874781832935
 BoxCollider2D:
@@ -285,7 +283,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -6164834272971422932, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+  m_Sprite: {fileID: -2545511984063369323, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

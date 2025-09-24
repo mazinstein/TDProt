@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UpgradeOptionMag2
   m_EditorClassIdentifier: 
   optionId: 
-  icon: {fileID: -3562724673036553761, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+  icon: {fileID: 4070518175746698545, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
   cost: 10
   addPower: 5
   mulPower: 1

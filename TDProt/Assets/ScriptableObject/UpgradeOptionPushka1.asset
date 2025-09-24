@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UpgradeOptionPushka1
   m_EditorClassIdentifier: 
   optionId: 
-  icon: {fileID: 1281890600674870062, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+  icon: {fileID: 6137813302077351160, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
   cost: 10
   addPower: 5
   mulPower: 1
@@ -21,5 +21,5 @@ MonoBehaviour:
   mulRange: 1
   addDelay: 0
   mulDelay: 1
-  replaceWithPrefab: 0
-  replacementPrefab: {fileID: 0}
+  replaceWithPrefab: 1
+  replacementPrefab: {fileID: -4416063346792092445, guid: 1e3932c15aab9e048b12dea851170a41, type: 3}
