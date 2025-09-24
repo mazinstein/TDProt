@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UpgradeOptionArbalet2
   m_EditorClassIdentifier: 
   optionId: 
-  icon: {fileID: -2547136823575072218, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+  icon: {fileID: 9181213876643157182, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
   cost: 10
   addPower: 5
   mulPower: 1

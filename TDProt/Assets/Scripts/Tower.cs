@@ -4,12 +4,6 @@ using UnityEngine;
 /// <summary>
 /// Tower: стрельба, поиск цели, покупка/продажа, классический апгрейд по уровням
 /// + гибкая система "UpgradeOption" (до 3 иконок) с возможностью менять параметры или заменять префаб.
-/// Совместимо с LevelManager интерфейсом:
-///  - LevelManager.Instance.SpendCoins(int)
-///  - LevelManager.Instance.AddCoins(int)
-///  - LevelManager.Instance.RegisterSpawnedTower(Tower)
-///  - LevelManager.Instance.UnregisterSpawnedTower(Tower)
-///  - LevelManager.Instance.GetBulletFromPool(Bullet)
 /// </summary>
 public class Tower : MonoBehaviour
 {
@@ -35,15 +29,14 @@ public class Tower : MonoBehaviour
     [SerializeField] private float _upgradeDelayMultiplier = 0.9f;
     [SerializeField] private float _upgradeCostMultiplier = 1.7f;
 
-    [Header("Upgrade options (3 icons)")]
-    [Tooltip("Можно задать до 3 UpgradeOption ассетов (иконка, стоимость, модификаторы, замена префаба).")]
+    [Header("Upgrade options (up to 3 icons)")]
     [SerializeField] private UpgradeOption[] _upgradeOptions = new UpgradeOption[3];
-
-    // internal state of used options
     private bool[] _optionUsed;
 
     [Header("Bullet")]
     [SerializeField] private Bullet _bulletPrefab;
+
+    [SerializeField] private Sprite[] _classicUpgradeIcons;
 
     // placement support (для drag&drop)
     public Vector2? PlacePosition { get; private set; }
@@ -59,13 +52,11 @@ public class Tower : MonoBehaviour
 
     private void Awake()
     {
-        // init option flags
         if (_upgradeOptions != null && _upgradeOptions.Length > 0)
             _optionUsed = new bool[_upgradeOptions.Length];
         else
             _optionUsed = new bool[0];
 
-        // allow immediate shot after placement
         _runningShootDelay = 0f;
     }
 
@@ -74,7 +65,22 @@ public class Tower : MonoBehaviour
     {
         return _towerHead != null ? _towerHead.sprite : null;
     }
+    public Sprite GetClassicUpgradeIcon()
+    {
+        // следующий уровень = текущий уровень (level) + 1, но для индекса в массиве используем current level
+        if (_level >= _maxLevel) return null;
+        if (_classicUpgradeIcons != null && _level >= 0 && _level < _classicUpgradeIcons.Length)
+            return _classicUpgradeIcons[_level];
+        return null;
+    }
 
+    public bool HasClassicUpgradeAvailable()
+    {
+        if (_level >= _maxLevel) return false;
+        if (LevelManager.Instance == null) return false;
+        int cost = GetUpgradeCost();
+        return cost > 0 && LevelManager.Instance.CoinsSafe >= cost;
+    }
     public void SetPlacePosition(Vector2? newPosition)
     {
         PlacePosition = newPosition;
@@ -168,9 +174,6 @@ public class Tower : MonoBehaviour
     #endregion
 
     #region Classic leveling (optional)
-    /// <summary>
-    /// Цена классического апгрейда: basePurchaseCost * upgradeCostMultiplier^level (округление вверх)
-    /// </summary>
     public int GetUpgradeCost()
     {
         if (_level >= _maxLevel) return 0;
@@ -235,36 +238,36 @@ public class Tower : MonoBehaviour
     }
 
     /// <summary>
-    /// Применить опцию апгрейда (иконку) с индексом index.
-    /// Снимает деньги через LevelManager.SpendCoins(opt.cost).
-    /// Поддерживается простая модификация статов и опциональная замена префаба.
+    /// Apply upgrade option. Returns the Tower instance that now represents this slot:
+    /// - returns this if no replacement happened,
+    /// - returns the new Tower instance if replacementPrefab was instantiated.
     /// </summary>
-    public void ApplyUpgradeOption(int index)
+    public Tower ApplyUpgradeOption(int index)
     {
-        if (_upgradeOptions == null || index < 0 || index >= _upgradeOptions.Length) return;
+        if (_upgradeOptions == null || index < 0 || index >= _upgradeOptions.Length) return this;
         var opt = _upgradeOptions[index];
-        if (opt == null) return;
+        if (opt == null) return this;
         if (_optionUsed == null) _optionUsed = new bool[_upgradeOptions.Length];
 
         if (LevelManager.Instance == null)
         {
             Debug.LogError("ApplyUpgradeOption: LevelManager missing.", this);
-            return;
+            return this;
         }
 
         if (_optionUsed[index])
         {
             Debug.Log("ApplyUpgradeOption: option already used.", this);
-            return;
+            return this;
         }
 
         if (!LevelManager.Instance.SpendCoins(opt.cost))
         {
             Debug.Log("ApplyUpgradeOption: not enough coins.", this);
-            return;
+            return this;
         }
 
-        // Применяем модификаторы (порядок: add -> mul)
+        // apply stat modifiers (add -> mul)
         _shootPower = Mathf.CeilToInt((_shootPower + opt.addPower) * opt.mulPower);
         _shootDistance = (_shootDistance + opt.addRange) * opt.mulRange;
         _shootDelay = Mathf.Max(0.01f, (_shootDelay + opt.addDelay) * opt.mulDelay);
@@ -273,38 +276,35 @@ public class Tower : MonoBehaviour
 
         Debug.Log($"Applied upgrade option '{opt.optionId}' on tower {name}.", this);
 
-        // Если опция заменяет префаб — создаём replacementPrefab на том же месте и регистрируем в LevelManager
+        // If replacement requested - instantiate replacement prefab
         if (opt.replaceWithPrefab && opt.replacementPrefab != null)
         {
             Vector3 pos = transform.position;
             Quaternion rot = transform.rotation;
             Transform parent = transform.parent;
 
-            // Убираем старую башню из LevelManager
             LevelManager.Instance.UnregisterSpawnedTower(this);
 
-            // Создаём новую башню
             GameObject go = Instantiate(opt.replacementPrefab.gameObject, pos, rot, parent);
             Tower newTower = go.GetComponent<Tower>();
             if (newTower != null)
             {
-                // Возможно, стоит перенести часть состояния сюда (например, used options, уровень и т.п.)
-                // Регистрация
                 LevelManager.Instance.RegisterSpawnedTower(newTower);
             }
-            // Уничтожаем старую
+            else
+            {
+                Debug.LogError("ApplyUpgradeOption: replacement prefab has no Tower component!", this);
+            }
+
             Destroy(gameObject);
-            return;
+            return newTower;
         }
 
-        // Если не было замены префаба — UI/панель должны обновиться извне (например, TowerPanelUI.Refresh)
+        return this;
     }
     #endregion
 
     #region Sell / Remove
-    /// <summary>
-    /// Возвращает цену продажи (половина от базовой покупки, округление вверх)
-    /// </summary>
     public int GetSellPrice()
     {
         return Mathf.CeilToInt(_basePurchaseCost * 0.5f);
@@ -319,7 +319,6 @@ public class Tower : MonoBehaviour
             LevelManager.Instance.UnregisterSpawnedTower(this);
         }
 
-        // Если используешь пул для башен — лучше деактивировать вместо Destroy
         Destroy(gameObject);
     }
     #endregion
