@@ -11,6 +11,10 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] private bool musicEnabled = true;
 
+    [SerializeField] private AudioClip towerShootClip1;
+    [SerializeField] private AudioClip towerShootClip2;
+    [SerializeField] private AudioClip towerShootClip3;
+
     private void Awake()
     {
         if (Instance == null)
@@ -63,5 +67,19 @@ public class SoundManager : MonoBehaviour
             // Ставим музыку на паузу
             musicSource.Pause();
         }
+    }
+
+    public void PlayTowerShootSound(int towerIndex)
+    {
+        if (audioSource == null) return;
+        AudioClip clip = null;
+        switch (towerIndex)
+        {
+            case 1: clip = towerShootClip1; break;
+            case 2: clip = towerShootClip2; break;
+            case 3: clip = towerShootClip3; break;
+        }
+        if (clip != null)
+            audioSource.PlayOneShot(clip);
     }
 }

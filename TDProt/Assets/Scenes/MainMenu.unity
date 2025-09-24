@@ -796,6 +796,9 @@ MonoBehaviour:
   musicSource: {fileID: 261215939}
   backgroundMusicClip: {fileID: 8300000, guid: 9613a0bf6da8ec041b3c5f69ca699d0d, type: 3}
   musicEnabled: 1
+  towerShootClip1: {fileID: 8300000, guid: 1d74880bed4586644a16a79a2d9dc8af, type: 3}
+  towerShootClip2: {fileID: 8300000, guid: b7f8695cf65a4f24eb37544298821146, type: 3}
+  towerShootClip3: {fileID: 8300000, guid: fd25a15f9797641458336cccfb445343, type: 3}
 --- !u!4 &261215938
 Transform:
   m_ObjectHideFlags: 0

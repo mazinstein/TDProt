@@ -170,6 +170,9 @@ public class Tower : MonoBehaviour
         bullet.gameObject.SetActive(true);
 
         _runningShootDelay = _shootDelay;
+
+        // Воспроизведение звука выстрела
+        SoundManager.Instance.PlayTowerShootSound(towerIndex);
     }
     #endregion
 
@@ -322,4 +325,6 @@ public class Tower : MonoBehaviour
         Destroy(gameObject);
     }
     #endregion
+
+    [SerializeField] private int towerIndex = 1; // 1, 2 или 3 для разных башен
 }

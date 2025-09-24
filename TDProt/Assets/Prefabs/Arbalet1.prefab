@@ -13,6 +13,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: towerIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _shootDelay
       value: 0.8
       objectReference: {fileID: 0}
@@ -70,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3847651385577440083, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Name
-      value: Tower Variant 1
+      value: Arbalet1
       objectReference: {fileID: 0}
     - target: {fileID: 4145847168455039737, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite

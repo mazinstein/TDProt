@@ -121,6 +121,8 @@ MonoBehaviour:
   _upgradeOptions:
   - {fileID: 11400000, guid: d15b464f92967684b9e362e37aee2c33, type: 2}
   _bulletPrefab: {fileID: 2405264904785137108, guid: 5269b4c729ba199439c6f3292696e24a, type: 3}
+  _classicUpgradeIcons: []
+  towerIndex: 2
 --- !u!61 &3247289874781832935
 BoxCollider2D:
   m_ObjectHideFlags: 0

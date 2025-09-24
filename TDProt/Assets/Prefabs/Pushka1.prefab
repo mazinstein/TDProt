@@ -226,6 +226,7 @@ MonoBehaviour:
   _classicUpgradeIcons:
   - {fileID: 6137813302077351160, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
   - {fileID: -8760288009359856575, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+  towerIndex: 2
 --- !u!61 &3247289874781832935
 BoxCollider2D:
   m_ObjectHideFlags: 0
