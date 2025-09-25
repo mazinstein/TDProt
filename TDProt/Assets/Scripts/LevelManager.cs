@@ -206,8 +206,7 @@ public class LevelManager : MonoBehaviour
             TowerUI newTowerUI = newTowerUIObj.GetComponent<TowerUI>();
             if (newTowerUI != null)
             {
-                // НЕ вызывайте SetTowerPrefab, если хотите сохранить настройки из инспектора
-                // newTowerUI.SetTowerPrefab(tower); // <-- закомментируйте или удалите
+                newTowerUI.SetTowerPrefab(tower);
                 newTowerUI.transform.name = tower.name;
             }
         }
