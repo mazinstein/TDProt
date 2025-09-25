@@ -124,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mag2
       objectReference: {fileID: 0}
+    - target: {fileID: 3948612627609189258, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4145847168455039737, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -142,15 +146,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.71428573
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.45
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalPosition.z
@@ -186,7 +190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8827616250231465802, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalScale.x

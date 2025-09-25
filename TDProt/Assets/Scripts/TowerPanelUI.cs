@@ -21,36 +21,54 @@ public class TowerPanelUI : MonoBehaviour
     public Button sellButton;
 
     [Header("Classic upgrade (single button)")]
-    public GameObject classicUpgradeContainer; // root ??? ?????? ????????????? ???????? (??????????/????????)
+    public GameObject classicUpgradeContainer;
     public Button classicUpgradeButton;
-    public Image classicUpgradeImage; // ???????? ?????? ??????
-    public TextMeshProUGUI classicUpgradeCostText; // ???? ????????
+    public Image classicUpgradeImage;
+    public TextMeshProUGUI classicUpgradeCostText;
 
     private Tower _current;
 
     private void Awake()
     {
-        if (classicUpgradeButton != null) classicUpgradeButton.onClick.AddListener(OnClassicUpgradePressed);
         if (panelRoot != null) panelRoot.SetActive(false);
 
-        // ????????? ??????????? ??? ??????
+        if (classicUpgradeButton != null) classicUpgradeButton.onClick.AddListener(OnClassicUpgradePressed);
+
         for (int i = 0; i < upgradeIconButtons.Length; i++)
         {
             int idx = i;
             if (upgradeIconButtons[idx] != null)
                 upgradeIconButtons[idx].onClick.AddListener(() => OnUpgradeIconPressed(idx));
         }
+
         if (sellButton != null) sellButton.onClick.AddListener(OnSellPressed);
+    }
+
+    // Debug helper — ?????? ? Inspector, ????? ??????? ??????? ?????
+    [ContextMenu("LogLinkedImages")]
+    public void LogLinkedImages()
+    {
+        Debug.Log($"--- TowerPanelUI linked images (panelRoot={panelRoot?.name}) ---", this);
+        for (int i = 0; i < upgradeIconImages.Length; i++)
+        {
+            var img = upgradeIconImages[i];
+            Debug.Log($"upgradeIconImages[{i}] -> {(img != null ? img.gameObject.name : "NULL")}", img);
+        }
+        Debug.Log($"classicUpgradeImage -> {(classicUpgradeImage != null ? classicUpgradeImage.gameObject.name : "NULL")}", classicUpgradeImage);
     }
 
     public void ShowForTower(Tower tower)
     {
         _current = tower;
         if (panelRoot != null) panelRoot.SetActive(true);
+
+        Debug.Log($"ShowForTower: tower='{_current?.name}' (instance id: {_current?.GetInstanceID().ToString()} )", this);
+
+        // ???????, ????? Image ??????? ????????? (??????? ???????????)
+        LogLinkedImages();
+
         Refresh();
     }
-
-
 
     public void Hide()
     {
@@ -63,95 +81,119 @@ public class TowerPanelUI : MonoBehaviour
         if (_current == null) { Hide(); return; }
         if (_current.gameObject == null) { Hide(); return; }
 
-        // ... ???????????? ??? ??? ?????????/??????/????? ...
+        if (titleText != null) titleText.text = _current.gameObject.name.Replace("(Clone)", "").Trim();
+        if (levelText != null) levelText.text = $"Level: {_current.CurrentLevel}/{_current.MaxLevel}";
 
-        // --- ???????????? ??????? ---
+        // --- classic upgrade ---
         if (classicUpgradeContainer != null)
         {
             if (_current.CurrentLevel >= _current.MaxLevel)
             {
-                // ????????? ???????? — ???????? ?????????
                 classicUpgradeContainer.SetActive(false);
             }
             else
             {
-                // ?????????? ????????? ? ????????? ??????
                 classicUpgradeContainer.SetActive(true);
                 Sprite icon = _current.GetClassicUpgradeIcon();
                 if (classicUpgradeImage != null)
                 {
-                    classicUpgradeImage.sprite = icon;
-                    classicUpgradeImage.color = icon != null ? Color.white : new Color(1, 1, 1, 0.0f);
+                    // ???????? ????? ??????????
+                    if (icon == null)
+                    {
+                        classicUpgradeImage.sprite = null;
+                        classicUpgradeImage.color = new Color(1, 1, 1, 0f);
+                    }
+                    else
+                    {
+                        classicUpgradeImage.sprite = icon;
+                        classicUpgradeImage.color = Color.white;
+                        classicUpgradeImage.SetNativeSize();
+                    }
                 }
 
                 int cost = _current.GetUpgradeCost();
                 if (classicUpgradeCostText != null) classicUpgradeCostText.text = cost > 0 ? $"{cost}" : "-";
 
-                // ??????????? ??????
                 if (classicUpgradeButton != null)
                     classicUpgradeButton.interactable = _current.HasClassicUpgradeAvailable();
             }
         }
 
+        // --- options ---
         var opts = _current.GetUpgradeOptions();
         for (int i = 0; i < upgradeIconImages.Length; i++)
         {
-            if (i < opts.Length && opts[i] != null)
+            Image img = upgradeIconImages[i];
+            TextMeshProUGUI costText = (i < upgradeIconCostTexts.Length) ? upgradeIconCostTexts[i] : null;
+            Button btn = (i < upgradeIconButtons.Length) ? upgradeIconButtons[i] : null;
+
+            if (opts != null && i < opts.Length && opts[i] != null)
             {
                 var opt = opts[i];
-                if (upgradeIconImages[i] != null) upgradeIconImages[i].sprite = opt.icon;
-                if (upgradeIconCostTexts[i] != null) upgradeIconCostTexts[i].text = $"{opt.cost}";
-                if (upgradeIconButtons[i] != null)
+                // assign sprite
+                if (img != null)
+                {
+                    img.sprite = opt.icon;
+                    img.color = Color.white;
+                    img.SetNativeSize();
+                }
+
+                if (costText != null) costText.text = $"{opt.cost}";
+
+                if (btn != null)
                 {
                     bool used = _current.IsOptionUsed(i);
                     bool can = _current.CanApplyOption(i);
-                    upgradeIconButtons[i].interactable = !used && can;
-                    // ????????? ????????? ???? ??? ????????????
-                    upgradeIconImages[i].color = used ? new Color(0.6f, 0.6f, 0.6f, 1f) : Color.white;
+                    btn.interactable = !used && can;
                 }
             }
             else
             {
-                // ????????????? ????? — ???????? ??????/??????
-                if (upgradeIconImages[i] != null) upgradeIconImages[i].sprite = null;
-                if (upgradeIconCostTexts[i] != null) upgradeIconCostTexts[i].text = "-";
-                if (upgradeIconButtons[i] != null) upgradeIconButtons[i].interactable = false;
-                if (upgradeIconImages[i] != null) upgradeIconImages[i].color = new Color(0.6f, 0.6f, 0.6f, 0.5f);
+                if (img != null)
+                {
+                    img.sprite = null;
+                    img.color = new Color(1, 1, 1, 0f);
+                }
+                if (costText != null) costText.text = "-";
+                if (btn != null) btn.interactable = false;
             }
         }
 
+        // sell button: ?????????? ?????? ???? GetSellPrice() > 0
         if (sellPriceText != null) sellPriceText.text = $"Sell: {_current.GetSellPrice()}";
-        if (sellButton != null) sellButton.interactable = true;
+        if (sellButton != null) sellButton.interactable = (_current.GetSellPrice() > 0);
+
+        Debug.Log($"Refresh panel for '{_current.name}'. SellPrice={_current.GetSellPrice()}. Options count={(opts != null ? opts.Length : 0)}", this);
     }
 
     private void OnUpgradeIconPressed(int index)
     {
         if (_current == null) return;
 
-        // ????????? ????? ? ???????? ??????, ??????? ?????? ???????????? ????? (this ??? ?????)
+        Debug.Log($"OnUpgradeIconPressed: index={index} for tower {_current.name}", this);
+
         Tower returned = _current.ApplyUpgradeOption(index);
 
         if (returned == null)
         {
-            // ?????? ??? ??????; ???????? ?????? ????? ?? ????????? ?? ????????? ?????
             Debug.LogWarning("OnUpgradeIconPressed: upgrade replaced tower but new instance is null. Hiding panel.");
             Hide();
             return;
         }
 
-        // ???? ???????? ?????? ????????? (?????? ???????), ????????? ?????? ? ??????
         if (returned != _current)
         {
+            Debug.Log($"Upgrade replaced tower instance. Updating panel reference to new tower: {returned.name}", this);
             _current = returned;
         }
 
-        // ????????? ??????????? ?????? (??????, ??????????? ?????? ? ?.?.)
         Refresh();
     }
 
     private void OnSellPressed()
     {
         if (_current == null) return;
+        Debug.Log($"OnSellPressed: selling tower {_current.name}. SellPrice={_current.GetSellPrice()}", this);
         _current.Sell();
         Hide();
     }
@@ -160,11 +202,8 @@ public class TowerPanelUI : MonoBehaviour
     {
         if (_current == null) return;
 
-        // ???????? ???????????
+        Debug.Log($"OnClassicUpgradePressed for {_current.name}", this);
         _current.Upgrade();
-
-        // ????????? UI — ???? ??????? ?? ????????? (??? ?????) ?? ?????? ?? ?????????
-        // ?? Refresh() ??????? ????????????: ?????? ????????? ??? ????????? ???????? ??? max level
         Refresh();
     }
 }
