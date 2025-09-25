@@ -53,6 +53,7 @@ MonoBehaviour:
   _healthBar: {fileID: 168940073990728895}
   _healthFill: {fileID: 8155698852779335629}
   _coinReward: 1
+  _healthBarLerpSpeed: 8
 --- !u!212 &9098292126085484318
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -200,6 +201,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5660598341576065734}
     m_Modifications:
+    - target: {fileID: 1823386400770634741, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 1891904485013153904, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -251,6 +256,10 @@ PrefabInstance:
     - target: {fileID: 4945951772057217679, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
       propertyPath: m_Name
       value: Enemy Health Bar 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7654736980542259335, guid: 8737a6fd9f2a65646b3092b373dbb0cd, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

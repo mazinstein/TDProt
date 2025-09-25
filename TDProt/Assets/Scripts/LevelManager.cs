@@ -288,6 +288,9 @@ public class LevelManager : MonoBehaviour
 
         if (nextLevelButton != null)
             nextLevelButton.gameObject.SetActive(isWin);
+
+        if (!isWin)
+            SoundManager.Instance.PlayDefeatSound();
     }
     #endregion
 

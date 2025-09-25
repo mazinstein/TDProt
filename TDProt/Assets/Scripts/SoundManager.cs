@@ -14,6 +14,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioClip towerShootClip1;
     [SerializeField] private AudioClip towerShootClip2;
     [SerializeField] private AudioClip towerShootClip3;
+    [SerializeField] private AudioClip defeatClip;
 
     private void Awake()
     {
@@ -82,4 +83,12 @@ public class SoundManager : MonoBehaviour
         if (clip != null)
             audioSource.PlayOneShot(clip, 0.3f); // 0.3f — громкость эффекта
     }
+
+    public void PlayDefeatSound()
+    {
+        if (audioSource != null && defeatClip != null)
+            audioSource.PlayOneShot(defeatClip, 1f); // 0.7f — громкость, можно изменить
+    }
 }
+
+
