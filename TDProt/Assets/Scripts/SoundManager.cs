@@ -1,4 +1,4 @@
-using UnityEngine;
+п»їusing UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
@@ -59,12 +59,12 @@ public class SoundManager : MonoBehaviour
 
         if (musicEnabled)
         {
-            // Продолжаем музыку с того же места
+            // ГЏГ°Г®Г¤Г®Г«Г¦Г ГҐГ¬ Г¬ГіГ§Г»ГЄГі Г± ГІГ®ГЈГ® Г¦ГҐ Г¬ГҐГ±ГІГ 
             musicSource.UnPause();
         }
         else
         {
-            // Ставим музыку на паузу
+            // Г‘ГІГ ГўГЁГ¬ Г¬ГіГ§Г»ГЄГі Г­Г  ГЇГ ГіГ§Гі
             musicSource.Pause();
         }
     }
@@ -80,6 +80,6 @@ public class SoundManager : MonoBehaviour
             case 3: clip = towerShootClip3; break;
         }
         if (clip != null)
-            audioSource.PlayOneShot(clip);
+            audioSource.PlayOneShot(clip, 0.3f); // 0.3f вЂ” РіСЂРѕРјРєРѕСЃС‚СЊ СЌС„С„РµРєС‚Р°
     }
 }
