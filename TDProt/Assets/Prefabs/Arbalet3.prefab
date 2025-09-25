@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _level
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _towerCost
@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: towerIndex
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _shootDelay
@@ -65,25 +65,17 @@ PrefabInstance:
       value: 1.08
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
-      propertyPath: '_upgradeOptions.Array.data[0]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 732733bdb0a15c74dac11540e3707930, type: 2}
+      propertyPath: _upgradeOptions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
-      propertyPath: '_upgradeOptions.Array.data[1]'
-      value: 
-      objectReference: {fileID: 11400000, guid: 64f3ce6dfe881414f9ed6261866c6dd2, type: 2}
-    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
-      propertyPath: '_classicUpgradeIcons.Array.data[0]'
-      value: 
-      objectReference: {fileID: 3920039315935209100, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
-    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
-      propertyPath: '_classicUpgradeIcons.Array.data[1]'
-      value: 
-      objectReference: {fileID: 9181213876643157182, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+      propertyPath: _classicUpgradeIcons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 555378610994625886, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2547136823575072218, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+      objectReference: {fileID: 1628593483751695657, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
     - target: {fileID: 3247289874781832935, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Size.y
       value: 0.9978464
@@ -98,12 +90,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3847651385577440083, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Name
-      value: Arbalet1
+      value: Arbalet3
       objectReference: {fileID: 0}
     - target: {fileID: 4145847168455039737, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1110856070013635414, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+      objectReference: {fileID: -2547136823575072218, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
     - target: {fileID: 6399057323116866929, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

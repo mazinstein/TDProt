@@ -222,7 +222,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _towerIcon: {fileID: 7129934220429136240}
-  _towerPrefabs: []
+  _towerPrefabs:
+  - {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+  - {fileID: 6959069273343871193, guid: 92e3ed183bd474265870796a6b5da508, type: 3}
+  - {fileID: 3136276570880794436, guid: ed6200954d343444ebfb6f382fe2b4e3, type: 3}
 --- !u!1 &7200061744488907214
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,14 +284,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 6740741442962960701, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

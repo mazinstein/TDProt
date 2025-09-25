@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: _level
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _towerCost
       value: 6
       objectReference: {fileID: 0}
@@ -61,6 +65,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: _upgradeOptions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: '_upgradeOptions.Array.data[0]'
       value: 
       objectReference: {fileID: 11400000, guid: aecb533c169da64479b9693beaed81a2, type: 2}
@@ -72,6 +80,10 @@ PrefabInstance:
       propertyPath: '_upgradeOptions.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: e59f562fd9e37334ab057b5e1eec2084, type: 2}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: _classicUpgradeIcons.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 555378610994625886, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite
       value: 

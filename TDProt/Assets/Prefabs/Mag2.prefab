@@ -9,12 +9,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: _level
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _towerCost
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: towerIndex
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _shootDelay
@@ -61,17 +65,33 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: _upgradeOptions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: '_upgradeOptions.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: aecb533c169da64479b9693beaed81a2, type: 2}
+      objectReference: {fileID: 11400000, guid: 5f592bb31473eb543b90096151c36ae6, type: 2}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: '_upgradeOptions.Array.data[1]'
       value: 
-      objectReference: {fileID: 11400000, guid: 5f592bb31473eb543b90096151c36ae6, type: 2}
+      objectReference: {fileID: 11400000, guid: aecb533c169da64479b9693beaed81a2, type: 2}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: '_upgradeOptions.Array.data[2]'
       value: 
       objectReference: {fileID: 11400000, guid: e59f562fd9e37334ab057b5e1eec2084, type: 2}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: _classicUpgradeIcons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: '_classicUpgradeIcons.Array.data[0]'
+      value: 
+      objectReference: {fileID: -8760288009359856575, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
+    - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+      propertyPath: '_classicUpgradeIcons.Array.data[1]'
+      value: 
+      objectReference: {fileID: 6137813302077351160, guid: 0f08ba6a1376d4f4dbf30af7d0c8ec21, type: 3}
     - target: {fileID: 555378610994625886, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: m_Sprite
       value: 
