@@ -1011,7 +1011,7 @@ MonoBehaviour:
   _towerPrefabs:
   - {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
   - {fileID: 6959069273343871193, guid: 92e3ed183bd474265870796a6b5da508, type: 3}
-  - {fileID: 3136276570880794436, guid: a99d3b5f6be2b4801be79c04ce5b1887, type: 3}
+  - {fileID: 3136276570880794436, guid: ed6200954d343444ebfb6f382fe2b4e3, type: 3}
   _enemyPrefabs:
   - {fileID: 3976014249715406928, guid: 5a21dafb1d836a3478d3bde64dada69a, type: 3}
   - {fileID: 647444866207683573, guid: 7d032e3a9cad39144a95c1b1e1e15224, type: 3}
@@ -3700,6 +3700,10 @@ MonoBehaviour:
   - {fileID: 0}
   sellPriceText: {fileID: 1875980313}
   sellButton: {fileID: 0}
+  classicUpgradeContainer: {fileID: 0}
+  classicUpgradeButton: {fileID: 0}
+  classicUpgradeImage: {fileID: 0}
+  classicUpgradeCostText: {fileID: 0}
 --- !u!1 &624411676
 GameObject:
   m_ObjectHideFlags: 0

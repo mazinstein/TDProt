@@ -224,8 +224,14 @@ MonoBehaviour:
   _towerIcon: {fileID: 7129934220429136240}
   _towerPrefabs:
   - {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
+  - {fileID: -4416063346792092445, guid: 1e3932c15aab9e048b12dea851170a41, type: 3}
+  - {fileID: -4416063346792092445, guid: 8aefa928604b8764dac893599916e8b6, type: 3}
   - {fileID: 6959069273343871193, guid: 92e3ed183bd474265870796a6b5da508, type: 3}
+  - {fileID: 6959069273343871193, guid: 0c37ad6c5fd0f7f448a1f631b5c2eece, type: 3}
+  - {fileID: 6959069273343871193, guid: 19239627a0036fa4984b734642ae99f0, type: 3}
   - {fileID: 3136276570880794436, guid: ed6200954d343444ebfb6f382fe2b4e3, type: 3}
+  - {fileID: 3136276570880794436, guid: a99d3b5f6be2b4801be79c04ce5b1887, type: 3}
+  - {fileID: 3136276570880794436, guid: 810046ce6408ffd4abf238b5c0659e53, type: 3}
 --- !u!1 &7200061744488907214
 GameObject:
   m_ObjectHideFlags: 0
