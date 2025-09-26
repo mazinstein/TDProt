@@ -851,14 +851,14 @@ MonoBehaviour:
   - {fileID: 1729666795}
   - {fileID: 854824780}
   _maxLives: 3
-  _totalEnemy: 100
+  _totalEnemy: 200
   _panel: {fileID: 15818523}
   _statusInfo: {fileID: 15818522}
   _livesInfo: {fileID: 15818520}
   _totalEnemyInfo: {fileID: 15818521}
   restartButton: {fileID: 1278723833}
   nextLevelButton: {fileID: 0}
-  _startCoins: 1000
+  _startCoins: 60
   _coinsInfo: {fileID: 585902914}
   _coinIcon: {fileID: 627505751}
   victoryPanel: {fileID: 0}
@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516d165bc50c1da45a73b35cc7f016d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLength: 180
+  levelLength: 300
   budgetCurve:
     serializedVersion: 2
     m_Curve:
@@ -1010,8 +1010,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -1019,12 +1019,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  budgetStart: 2
-  budgetEnd: 80
+  budgetStart: 15
+  budgetEnd: 300
   tickInterval: 1
   accumulateBudget: 1
-  totalSpawnLimit: 50
-  minSpawnInterval: 0.18
+  totalSpawnLimit: 200
+  minSpawnInterval: 0.13
   spawnPoints:
   - {fileID: 1264810881}
   - {fileID: 57602912}
@@ -5821,7 +5821,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -213.24, y: -71.7}
+  m_AnchoredPosition: {x: -213.24, y: -64}
   m_SizeDelta: {x: 63.421, y: 89.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &618328058
@@ -7662,7 +7662,7 @@ Transform:
   m_GameObject: {fileID: 861345760}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.1, y: 1.8900001, z: 0}
+  m_LocalPosition: {x: -11.23, y: 1.8900001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15621,7 +15621,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 36, y: 20.5}
+  m_AnchoredPosition: {x: 36, y: 29}
   m_SizeDelta: {x: 37, y: 41}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1940958088
