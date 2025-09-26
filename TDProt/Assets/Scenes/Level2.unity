@@ -810,7 +810,7 @@ MonoBehaviour:
   _towerPrefabs:
   - {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
   - {fileID: 6959069273343871193, guid: 92e3ed183bd474265870796a6b5da508, type: 3}
-  - {fileID: 3136276570880794436, guid: a99d3b5f6be2b4801be79c04ce5b1887, type: 3}
+  - {fileID: 3136276570880794436, guid: ed6200954d343444ebfb6f382fe2b4e3, type: 3}
   _enemyPrefabs:
   - {fileID: 3976014249715406928, guid: 5a21dafb1d836a3478d3bde64dada69a, type: 3}
   - {fileID: 647444866207683573, guid: 7d032e3a9cad39144a95c1b1e1e15224, type: 3}
@@ -851,7 +851,7 @@ MonoBehaviour:
   - {fileID: 1729666795}
   - {fileID: 854824780}
   _maxLives: 3
-  _totalEnemy: 300
+  _totalEnemy: 150
   _panel: {fileID: 15818523}
   _statusInfo: {fileID: 15818522}
   _livesInfo: {fileID: 15818520}
@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516d165bc50c1da45a73b35cc7f016d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLength: 300
+  levelLength: 100
   budgetCurve:
     serializedVersion: 2
     m_Curve:
@@ -1019,12 +1019,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  budgetStart: 20
-  budgetEnd: 600
+  budgetStart: 5
+  budgetEnd: 350
   tickInterval: 1
   accumulateBudget: 1
-  totalSpawnLimit: 300
-  minSpawnInterval: 0.13
+  totalSpawnLimit: 150
+  minSpawnInterval: 0.08
   spawnPoints:
   - {fileID: 1264810881}
   - {fileID: 57602912}
@@ -1066,7 +1066,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 09c99fe7a2479af40a18887078c35ec7, type: 2}
   maxConcurrent: 12
   maxPerTick: 2
-  spawnDelayBetween: 0.25
+  spawnDelayBetween: 0.12
 --- !u!114 &27698443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1094,8 +1094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 27698442}
-  adjustInterval: 40
-  playerWinRateThreshold: 0.3
+  adjustInterval: 4
+  playerWinRateThreshold: 15
 --- !u!114 &27698445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15712,11 +15712,11 @@ PrefabInstance:
     - target: {fileID: 270645557433282387, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 27698446}
     - target: {fileID: 270645557433282387, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 27698446}
     - target: {fileID: 270645557433282387, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -15742,24 +15742,28 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1329173771273406326, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1329173771273406326, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1329173771273406326, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 27698436}
+      objectReference: {fileID: 27698446}
     - target: {fileID: 1329173771273406326, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 27698446}
     - target: {fileID: 1329173771273406326, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1329173771273406326, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: TogglePause
       objectReference: {fileID: 0}
     - target: {fileID: 1329173771273406326, guid: 83df9f544c4ed4989acc5e5f785064bb, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
