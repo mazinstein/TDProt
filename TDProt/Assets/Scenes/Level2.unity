@@ -851,7 +851,7 @@ MonoBehaviour:
   - {fileID: 1729666795}
   - {fileID: 854824780}
   _maxLives: 3
-  _totalEnemy: 200
+  _totalEnemy: 300
   _panel: {fileID: 15818523}
   _statusInfo: {fileID: 15818522}
   _livesInfo: {fileID: 15818520}
@@ -1019,11 +1019,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  budgetStart: 15
-  budgetEnd: 300
+  budgetStart: 20
+  budgetEnd: 600
   tickInterval: 1
   accumulateBudget: 1
-  totalSpawnLimit: 200
+  totalSpawnLimit: 300
   minSpawnInterval: 0.13
   spawnPoints:
   - {fileID: 1264810881}
@@ -1094,8 +1094,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 27698442}
-  adjustInterval: 15
-  playerWinRateThreshold: 0.7
+  adjustInterval: 40
+  playerWinRateThreshold: 0.3
 --- !u!114 &27698445
 MonoBehaviour:
   m_ObjectHideFlags: 0

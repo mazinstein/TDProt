@@ -16,7 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 7598934181126374145, guid: 40c5eb5f7252e944d9927ca471e08706, type: 3}
   baseHealth: 120
   baseSpeed: 1
-  coinReward: 20
+  coinReward: 12
   cost: 15
   weight: 1
   unlockTime: 0
