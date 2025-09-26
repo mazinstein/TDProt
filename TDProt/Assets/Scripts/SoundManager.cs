@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip buttonClickClip;
 
-    [SerializeField] private AudioSource musicSource;
+    [SerializeField] public AudioSource musicSource;
     [SerializeField] private AudioClip backgroundMusicClip;
 
     [SerializeField] private bool musicEnabled = true;
