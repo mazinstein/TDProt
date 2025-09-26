@@ -89,6 +89,10 @@ public class LevelManager : MonoBehaviour
 
         InstantiateAllTowerUI();
         CreateHearts();
+
+        // Запускаем музыку только если она не играет
+        if (SoundManager.Instance != null && (SoundManager.Instance.musicSource == null || !SoundManager.Instance.musicSource.isPlaying))
+            SoundManager.Instance.PlayBackgroundMusic();
     }
 
     private void Update()
