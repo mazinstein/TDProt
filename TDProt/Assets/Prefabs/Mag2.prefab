@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: towerIndex
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4416063346792092445, guid: d9b814f2ec64445d589e2f2d1fbd2467, type: 3}
       propertyPath: _shootDelay
